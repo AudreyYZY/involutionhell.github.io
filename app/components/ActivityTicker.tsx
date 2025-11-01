@@ -27,25 +27,6 @@ type ActivityTickerProps = {
 };
 
 /**
- * 将 JSON 内的 coverUrl 解析为可供 next/image 使用的绝对路径。
- * - 保留 http 链接（常见于 Discord CDN）
- * - 将 `./assets/` 前缀映射到 `public/event-assets/`
- * - 其它情况按原值返回，方便未来扩展
- */
-function resolveCoverUrl(coverUrl: string): string {
-  if (coverUrl.startsWith("http")) {
-    return coverUrl;
-  }
-
-  if (coverUrl.startsWith("./assets/")) {
-    const filename = coverUrl.replace("./assets/", "");
-    return `/event-assets/${filename}`;
-  }
-
-  return coverUrl;
-}
-
-/**
  * 首页活动轮播组件：
  * - 读取 event.json 配置的活动数量
  * - 自动轮播封面图，顶部指示器支持手动切换
@@ -93,7 +74,7 @@ export function ActivityTicker({ className }: ActivityTickerProps) {
   }
 
   const activeEvent = events[activeIndex];
-  const coverSrc = resolveCoverUrl(activeEvent.coverUrl);
+  const coverSrc = activeEvent.coverUrl;
   const showPlayback = activeEvent.deprecated && Boolean(activeEvent.playback);
 
   return (
