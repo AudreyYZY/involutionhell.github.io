@@ -46,6 +46,21 @@ const config = {
         hostname: "*.coly.cc",
         pathname: "/**",
       },
+      {
+        protocol: "https",
+        hostname: "cdn.discordapp.com",
+        pathname: "/**",
+      },
+      {
+        protocol: "https",
+        hostname: "media.discordapp.net",
+        pathname: "/**",
+      },
+      {
+        protocol: "https",
+        hostname: "placehold.co",
+        pathname: "/**",
+      },
     ],
     unoptimized: true,
     formats: ["image/avif", "image/webp"],

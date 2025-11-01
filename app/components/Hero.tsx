@@ -2,6 +2,7 @@ import Link from "next/link";
 import ZoteroFeedLazy from "@/app/components/ZoteroFeedLazy";
 import { Contribute } from "@/app/components/Contribute";
 import Image from "next/image";
+import { ActivityTicker } from "@/app/components/ActivityTicker";
 
 export function Hero() {
   const categories: { title: string; desc: string; href: string }[] = [
@@ -29,7 +30,14 @@ export function Hero() {
 
   return (
     <section className="relative">
-      <div className="container mx-auto px-6 pt-12 pb-0 text-center">
+      <div className="container relative mx-auto px-6 pt-12 pb-0 text-center">
+        {/* 首页活动轮播浮窗：桌面端右上角，移动端底部居中 */}
+        <div className="absolute right-4 top-24 z-20 hidden sm:block w-72 lg:w-80">
+          <ActivityTicker />
+        </div>
+        <div className="absolute left-1/2 bottom-6 z-20 w-[min(90vw,320px)] -translate-x-1/2 sm:hidden">
+          <ActivityTicker />
+        </div>
         <div className="relative mx-auto max-w-5xl mt-12">
           <Image
             src="/mascot.webp"
