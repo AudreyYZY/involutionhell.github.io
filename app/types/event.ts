@@ -18,3 +18,17 @@ export interface ActivityEvent {
   /** 是否为已结束活动，true 时展示 Playback 按钮 */
   deprecated: boolean;
 }
+
+/** 活动轮播可配置参数 */
+export interface ActivityTickerSettings {
+  /** 首屏最多展示的活动数量 */
+  maxItems: number;
+  /** 自动轮播的间隔时间（毫秒） */
+  rotationIntervalMs: number;
+}
+
+/** event.json 的整体结构 */
+export interface ActivityEventsConfig {
+  settings: ActivityTickerSettings;
+  events: ActivityEvent[];
+}

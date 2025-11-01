@@ -1,16 +1,22 @@
-[
-  {
-    "name": "Mock Interview",
-    "discord": "https://discord.gg/QHsjqezfC?event=1430500169299922965",
-    "playback": "https://involutionhell.com/docs/jobs/event-keynote/event-takeway",
-    "coverUrl": "./event/mockInterview.png",
-    "deprecated": true
+{
+  "settings": {
+    "maxItems": 3,
+    "rotationIntervalMs": 8000
   },
-  {
-    "name": "Coffee Chat",
-    "discord": "https://discord.com/invite/8AQZj7sa?event=1432010537402761348",
-    "playback": "https://involutionhell.com/docs/jobs/event-keynote/coffee-chat",
-    "coverUrl": "./event/coffeeChat.png",
-    "deprecated": true
-  }
-]
+  "events": [
+    {
+      "name": "Mock Interview",
+      "discord": "https://discord.gg/QHsjqezfC?event=1430500169299922965",
+      "playback": "https://involutionhell.com/docs/jobs/event-keynote/event-takeway",
+      "coverUrl": "./event/mockInterview.png",
+      "deprecated": true
+    },
+    {
+      "name": "Coffee Chat",
+      "discord": "https://discord.com/invite/8AQZj7sa?event=1432010537402761348",
+      "playback": "https://involutionhell.com/docs/jobs/event-keynote/coffee-chat",
+      "coverUrl": "./event/coffeeChat.png",
+      "deprecated": true
+    }
+  ]
+}

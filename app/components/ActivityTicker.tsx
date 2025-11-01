@@ -5,12 +5,20 @@ import Link from "next/link";
 import { useCallback, useEffect, useMemo, useState } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import eventsData from "@/data/event.json";
-import type { ActivityEvent } from "@/app/types/event";
+import type { ActivityEvent, ActivityEventsConfig } from "@/app/types/event";
 import { cn } from "@/lib/utils";
 
-const MAX_ITEMS = 3;
-//
-const ROTATION_INTERVAL_MS = 8000;
+const {
+  events: rawEvents,
+  settings: {
+    maxItems: configuredMaxItems = 3,
+    rotationIntervalMs: configuredRotationIntervalMs = 8000,
+  },
+} = eventsData as ActivityEventsConfig;
+
+// 默认配置，从data/event.json中读取配置
+const MAX_ITEMS = configuredMaxItems;
+const ROTATION_INTERVAL_MS = configuredRotationIntervalMs;
 
 /** ActivityTicker 外部传入的样式配置 */
 type ActivityTickerProps = {
@@ -39,14 +47,14 @@ function resolveCoverUrl(coverUrl: string): string {
 
 /**
  * 首页活动轮播组件：
- * - 读取 event.json 前三条活动
+ * - 读取 event.json 配置的活动数量
  * - 自动轮播封面图，顶部指示器支持手动切换
  * - 底部两个毛玻璃按钮：Discord 永远可见，Playback 仅在 deprecated=true 时显示
  */
 export function ActivityTicker({ className }: ActivityTickerProps) {
   // 预处理活动列表，保持初次渲染后的引用稳定
   const events = useMemo<ActivityEvent[]>(() => {
-    return (eventsData as ActivityEvent[]).slice(0, MAX_ITEMS);
+    return rawEvents.slice(0, MAX_ITEMS);
   }, []);
 
   // 当前展示的活动索引
