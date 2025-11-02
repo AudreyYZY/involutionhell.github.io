@@ -7,6 +7,8 @@ on:
       - "**/*.mdx"
       - "source.config.ts"
       - "app/docs/**"
+      - "data/**"
+      - "tests/**"
       - "lib/source.ts"
       - "mdx-components.tsx"
       - "package.json"
@@ -35,6 +37,8 @@ jobs:
           cache: "pnpm"
 
       - run: pnpm install --frozen-lockfile
+      - name: Run tests
+        run: pnpm test
       # Non-blocking image migration + lint (visibility only)
       - name: Migrate images next to MDX (check only)
         run: pnpm migrate:images || echo "[warn] migrate:images failed (non-blocking)"

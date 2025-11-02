@@ -4,17 +4,19 @@ import Image from "next/image";
 import Link from "next/link";
 import { useCallback, useEffect, useMemo, useState } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
-import eventsData from "@/data/event.json";
-import type { ActivityEvent, ActivityEventsConfig } from "@/app/types/event";
+import {
+  activityEventsConfig,
+  type ActivityEvent,
+  type ActivityTickerSettings,
+} from "@/app/types/event";
 import { cn } from "@/lib/utils";
 
+const { events: rawEvents, settings } = activityEventsConfig;
+
 const {
-  events: rawEvents,
-  settings: {
-    maxItems: configuredMaxItems = 3,
-    rotationIntervalMs: configuredRotationIntervalMs = 8000,
-  },
-} = eventsData as ActivityEventsConfig;
+  maxItems: configuredMaxItems = 3,
+  rotationIntervalMs: configuredRotationIntervalMs = 8000,
+}: ActivityTickerSettings = settings;
 
 // 默认配置，从data/event.json中读取配置
 const MAX_ITEMS = configuredMaxItems;
