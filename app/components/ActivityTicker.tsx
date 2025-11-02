@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { useCallback, useEffect, useMemo, useState } from "react";
+import React, { useCallback, useEffect, useMemo, useState } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import {
   activityEventsConfig,
@@ -43,6 +43,17 @@ export function ActivityTicker({ className }: ActivityTickerProps) {
   // 当前展示的活动索引
   const [activeIndex, setActiveIndex] = useState(0);
   const totalEvents = events.length;
+
+  // 拖拽坐标
+  const [offset, setOffset] = useState({ x: 0, y: 0 });
+  const [dragStart, setDragStart] = useState<{ x: number; y: number } | null>(
+    null,
+  );
+
+  const handlePointerDown = (event: React.PointerEvent<HTMLDivElement>) => {
+    event.currentTarget.setPointerCapture(event.pointerId);
+    setDragStart({ x: event.clientX - offset.x, y: event.clientY - offset.y });
+  };
 
   useEffect(() => {
     if (totalEvents <= 1) {
