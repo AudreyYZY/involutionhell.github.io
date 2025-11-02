@@ -1,34 +1,48 @@
-/**
- * @description: 活动横幅所需要的类型
- * @param name 活动名称
- * @param discord discord活动链接
- * @param playback 回放链接
- * @param coverUrl 封面地址
- * @param deprecated 是否已经结束
- */
-export interface ActivityEvent {
+import { z } from "zod";
+import eventsJson from "@/data/event.json";
+
+export const ActivityEventSchema = z.object({
   /** 活动名称，用于轮播标题 */
-  name: string;
+  name: z.string().min(1, "name 不能为空"),
   /** Discord 活动入口链接 */
-  discord: string;
+  discord: z.string().min(1, "discord 入口不能为空"),
   /** 活动回放链接，deprecated 为 true 时展示 */
-  playback?: string;
+  playback: z.string().min(1, "playback 链接不能为空").optional(),
   /** 活动封面，可以是静态资源相对路径或完整 URL */
-  coverUrl: string;
+  coverUrl: z.string().min(1, "coverUrl 不能为空"),
   /** 是否为已结束活动，true 时展示 Playback 按钮 */
-  deprecated: boolean;
-}
+  deprecated: z.boolean(),
+});
 
-/** 活动轮播可配置参数 */
-export interface ActivityTickerSettings {
+export const ActivityTickerSettingsSchema = z.object({
   /** 首屏最多展示的活动数量 */
-  maxItems: number;
+  maxItems: z.number().int().positive("maxItems 需要为正整数"),
   /** 自动轮播的间隔时间（毫秒） */
-  rotationIntervalMs: number;
+  rotationIntervalMs: z
+    .number()
+    .int()
+    .positive("rotationIntervalMs 需要为正整数"),
+});
+
+export const ActivityEventsConfigSchema = z.object({
+  settings: ActivityTickerSettingsSchema,
+  events: z.array(ActivityEventSchema),
+});
+
+type ActivityEvent = z.infer<typeof ActivityEventSchema>;
+type ActivityTickerSettings = z.infer<typeof ActivityTickerSettingsSchema>;
+type ActivityEventsConfig = z.infer<typeof ActivityEventsConfigSchema>;
+
+const parsedEventsConfig = ActivityEventsConfigSchema.safeParse(eventsJson);
+
+if (!parsedEventsConfig.success) {
+  const issueMessages = parsedEventsConfig.error.issues
+    .map((issue) => `- ${issue.path.join(".") || "(root)"}: ${issue.message}`)
+    .join("\n");
+  throw new Error(`event.json 配置不合法:\n${issueMessages}`);
 }
 
-/** event.json 的整体结构 */
-export interface ActivityEventsConfig {
-  settings: ActivityTickerSettings;
-  events: ActivityEvent[];
-}
+export const activityEventsConfig: ActivityEventsConfig =
+  parsedEventsConfig.data;
+
+export type { ActivityEvent, ActivityEventsConfig, ActivityTickerSettings };
