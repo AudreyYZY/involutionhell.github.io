@@ -12,6 +12,8 @@ import { Label } from "@/components/ui/label";
 import { Input } from "@/components/ui/input";
 import { RadioGroup, RadioGroupItem } from "@/app/components/ui/radio-group";
 import { Button } from "@/components/ui/button";
+import { Checkbox } from "@/app/components/ui/checkbox";
+import { AlertCircle } from "lucide-react";
 
 interface SettingsDialogProps {
   isOpen: boolean;
@@ -29,6 +31,8 @@ export const SettingsDialog = ({
     setOpenaiApiKey,
     geminiApiKey,
     setGeminiApiKey,
+    saveToLocalStorage,
+    setSaveToLocalStorage,
     refreshFromStorage,
   } = useAssistantSettings();
 
@@ -70,28 +74,106 @@ export const SettingsDialog = ({
           </div>
 
           {provider === "openai" && (
-            <div className="space-y-2">
-              <Label htmlFor="openai-key">OpenAI API Key</Label>
-              <Input
-                id="openai-key"
-                type="password"
-                placeholder="sk-..."
-                value={openaiApiKey}
-                onChange={(e) => setOpenaiApiKey(e.target.value)}
-              />
+            <div className="space-y-4">
+              <div className="space-y-2">
+                <Label htmlFor="openai-key">OpenAI API Key</Label>
+                <Input
+                  id="openai-key"
+                  type="password"
+                  placeholder="sk-..."
+                  value={openaiApiKey}
+                  onChange={(e) => setOpenaiApiKey(e.target.value)}
+                />
+              </div>
+
+              <div className="space-y-3">
+                <div className="flex items-center space-x-2">
+                  <Checkbox
+                    id="save-to-storage"
+                    checked={saveToLocalStorage}
+                    onCheckedChange={(checked) =>
+                      setSaveToLocalStorage(checked === true)
+                    }
+                  />
+                  <Label
+                    htmlFor="save-to-storage"
+                    className="text-sm font-normal cursor-pointer"
+                  >
+                    保存 API Key 到本地存储
+                  </Label>
+                </div>
+
+                {saveToLocalStorage && (
+                  <div className="rounded-lg border border-amber-200 bg-amber-50 dark:border-amber-900/50 dark:bg-amber-950/20 p-3">
+                    <div className="flex gap-2">
+                      <AlertCircle className="size-4 text-amber-600 dark:text-amber-500 shrink-0 mt-0.5" />
+                      <div className="space-y-1 text-xs text-amber-900 dark:text-amber-200">
+                        <p className="font-medium">安全提示</p>
+                        <ul className="space-y-0.5 list-disc list-inside">
+                          <li>
+                            API Key 将以明文形式存储在浏览器的 localStorage 中
+                          </li>
+                          <li>任何能访问此浏览器的人都可能获取您的 API Key</li>
+                          <li>请勿在公用电脑或共享设备上勾选此选项</li>
+                          <li>建议定期更换 API Key 以提高安全性</li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                )}
+              </div>
             </div>
           )}
 
           {provider === "gemini" && (
-            <div className="space-y-2">
-              <Label htmlFor="gemini-key">Gemini API Key</Label>
-              <Input
-                id="gemini-key"
-                type="password"
-                placeholder="AIzaSy..."
-                value={geminiApiKey}
-                onChange={(e) => setGeminiApiKey(e.target.value)}
-              />
+            <div className="space-y-4">
+              <div className="space-y-2">
+                <Label htmlFor="gemini-key">Gemini API Key</Label>
+                <Input
+                  id="gemini-key"
+                  type="password"
+                  placeholder="AIzaSy..."
+                  value={geminiApiKey}
+                  onChange={(e) => setGeminiApiKey(e.target.value)}
+                />
+              </div>
+
+              <div className="space-y-3">
+                <div className="flex items-center space-x-2">
+                  <Checkbox
+                    id="save-to-storage"
+                    checked={saveToLocalStorage}
+                    onCheckedChange={(checked) =>
+                      setSaveToLocalStorage(checked === true)
+                    }
+                  />
+                  <Label
+                    htmlFor="save-to-storage"
+                    className="text-sm font-normal cursor-pointer"
+                  >
+                    保存 API Key 到本地存储
+                  </Label>
+                </div>
+
+                {saveToLocalStorage && (
+                  <div className="rounded-lg border border-amber-200 bg-amber-50 dark:border-amber-900/50 dark:bg-amber-950/20 p-3">
+                    <div className="flex gap-2">
+                      <AlertCircle className="size-4 text-amber-600 dark:text-amber-500 shrink-0 mt-0.5" />
+                      <div className="space-y-1 text-xs text-amber-900 dark:text-amber-200">
+                        <p className="font-medium">安全提示</p>
+                        <ul className="space-y-0.5 list-disc list-inside">
+                          <li>
+                            API Key 将以明文形式存储在浏览器的 localStorage 中
+                          </li>
+                          <li>任何能访问此浏览器的人都可能获取您的 API Key</li>
+                          <li>请勿在公用电脑或共享设备上勾选此选项</li>
+                          <li>建议定期更换 API Key 以提高安全性</li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                )}
+              </div>
             </div>
           )}
 

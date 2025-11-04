@@ -16,12 +16,14 @@ interface AssistantSettingsState {
   provider: Provider;
   openaiApiKey: string;
   geminiApiKey: string;
+  saveToLocalStorage: boolean; // 是否将API Key保存到localStorage
 }
 
 interface AssistantSettingsContextValue extends AssistantSettingsState {
   setProvider: (provider: Provider) => void;
   setOpenaiApiKey: (key: string) => void;
   setGeminiApiKey: (key: string) => void;
+  setSaveToLocalStorage: (save: boolean) => void;
   refreshFromStorage: () => void;
 }
 
@@ -31,6 +33,7 @@ const defaultSettings: AssistantSettingsState = {
   provider: "openai",
   openaiApiKey: "",
   geminiApiKey: "",
+  saveToLocalStorage: false,
 };
 
 const AssistantSettingsContext = createContext<
@@ -44,6 +47,8 @@ const parseStoredSettings = (raw: string | null): AssistantSettingsState => {
 
   try {
     const parsed = JSON.parse(raw) as Partial<AssistantSettingsState>;
+    const saveToLocalStorage = parsed.saveToLocalStorage === true;
+
     return {
       provider:
         parsed.provider === "gemini"
@@ -51,10 +56,16 @@ const parseStoredSettings = (raw: string | null): AssistantSettingsState => {
           : parsed.provider === "intern"
             ? "intern"
             : "openai",
+      // 只有在saveToLocalStorage为true时才使用存储的key
       openaiApiKey:
-        typeof parsed.openaiApiKey === "string" ? parsed.openaiApiKey : "",
+        saveToLocalStorage && typeof parsed.openaiApiKey === "string"
+          ? parsed.openaiApiKey
+          : "",
       geminiApiKey:
-        typeof parsed.geminiApiKey === "string" ? parsed.geminiApiKey : "",
+        saveToLocalStorage && typeof parsed.geminiApiKey === "string"
+          ? parsed.geminiApiKey
+          : "",
+      saveToLocalStorage,
     };
   } catch (error) {
     console.error(
@@ -89,7 +100,16 @@ export const AssistantSettingsProvider = ({
     }
 
     try {
-      window.localStorage.setItem(SETTINGS_KEY, JSON.stringify(settings));
+      // 根据saveToLocalStorage决定是否保存API key
+      const dataToSave = settings.saveToLocalStorage
+        ? settings
+        : {
+            ...settings,
+            openaiApiKey: "",
+            geminiApiKey: "",
+          };
+
+      window.localStorage.setItem(SETTINGS_KEY, JSON.stringify(dataToSave));
     } catch (error) {
       console.error("Failed to save assistant settings to localStorage", error);
     }
@@ -128,6 +148,9 @@ export const AssistantSettingsProvider = ({
       },
       setGeminiApiKey: (key: string) => {
         setSettings((prev) => ({ ...prev, geminiApiKey: key }));
+      },
+      setSaveToLocalStorage: (save: boolean) => {
+        setSettings((prev) => ({ ...prev, saveToLocalStorage: save }));
       },
       refreshFromStorage,
     }),
