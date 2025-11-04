@@ -133,8 +133,20 @@ export const AssistantSettingsProvider = ({
   }, []);
 
   const refreshFromStorage = useCallback(() => {
-    const latestSettings = readStoredSettings();
-    setSettings(latestSettings);
+    setSettings((prev) => {
+      const storedSettings = readStoredSettings();
+
+      if (storedSettings.saveToLocalStorage) {
+        return storedSettings;
+      }
+
+      return {
+        ...prev,
+        ...storedSettings,
+        openaiApiKey: prev.openaiApiKey,
+        geminiApiKey: prev.geminiApiKey,
+      };
+    });
   }, []);
 
   const value = useMemo(
