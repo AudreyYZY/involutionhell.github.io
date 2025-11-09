@@ -1,6 +1,6 @@
 {
   "repo": "InvolutionHell/involutionhell",
-  "generatedAt": "2025-11-09T12:54:54.688Z",
+  "generatedAt": "2025-11-09T13:29:44.892Z",
   "docsDir": "app/docs",
   "totalDocs": 106,
   "results": [
@@ -2021,13 +2021,13 @@
       "docId": "p8igr19xfxnuyo2lpngnr6fg",
       "path": "app/docs/CommunityShare/Leetcode/1234. 替换子串得到平衡字符串_translated.md",
       "contributorStats": {
-        "114939201": 1
+        "114939201": 3
       },
       "contributors": [
         {
           "githubId": "114939201",
-          "contributions": 1,
-          "lastContributedAt": "2025-11-09T12:50:29.000Z",
+          "contributions": 3,
+          "lastContributedAt": "2025-11-09T13:24:18.000Z",
           "login": "longsizhuo",
           "avatarUrl": "https://avatars.githubusercontent.com/u/114939201?v=4",
           "htmlUrl": "https://github.com/longsizhuo"
