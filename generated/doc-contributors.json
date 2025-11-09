@@ -1,8 +1,8 @@
 {
   "repo": "InvolutionHell/involutionhell",
-  "generatedAt": "2025-11-09T13:46:08.019Z",
+  "generatedAt": "2025-11-09T14:18:37.524Z",
   "docsDir": "app/docs",
-  "totalDocs": 106,
+  "totalDocs": 107,
   "results": [
     {
       "docId": "ue27z7z95yzw3lhhfj7nit1c",
@@ -2028,6 +2028,23 @@
           "githubId": "114939201",
           "contributions": 4,
           "lastContributedAt": "2025-11-09T13:41:11.000Z",
+          "login": "longsizhuo",
+          "avatarUrl": "https://avatars.githubusercontent.com/u/114939201?v=4",
+          "htmlUrl": "https://github.com/longsizhuo"
+        }
+      ]
+    },
+    {
+      "docId": "clx9mmqqvxipdfamqciuo146",
+      "path": "app/docs/CommunityShare/Leetcode/2679.矩阵中的和_translated.md",
+      "contributorStats": {
+        "114939201": 1
+      },
+      "contributors": [
+        {
+          "githubId": "114939201",
+          "contributions": 1,
+          "lastContributedAt": "2025-11-09T14:12:37.000Z",
           "login": "longsizhuo",
           "avatarUrl": "https://avatars.githubusercontent.com/u/114939201?v=4",
           "htmlUrl": "https://github.com/longsizhuo"
