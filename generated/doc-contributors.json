@@ -1,8 +1,8 @@
 {
-  "repo": "InvolutionHell/involutionhell.github.io",
-  "generatedAt": "2025-10-26T19:17:15.844Z",
+  "repo": "InvolutionHell/involutionhell",
+  "generatedAt": "2025-11-09T12:26:55.387Z",
   "docsDir": "app/docs",
-  "totalDocs": 104,
+  "totalDocs": 105,
   "results": [
     {
       "docId": "ue27z7z95yzw3lhhfj7nit1c",
@@ -1604,6 +1604,7 @@
       "docId": "ifwz8sqxqsgjrafa79pycrcm",
       "path": "app/docs/all-projects/multimodal-rl.mdx",
       "contributorStats": {
+        "114939201": 1,
         "150361711": 1,
         "163523387": 3
       },
@@ -1615,6 +1616,14 @@
           "login": "Mira190",
           "avatarUrl": "https://avatars.githubusercontent.com/u/163523387?v=4",
           "htmlUrl": "https://github.com/Mira190"
+        },
+        {
+          "githubId": "114939201",
+          "contributions": 1,
+          "lastContributedAt": "2025-10-27T18:01:38.000Z",
+          "login": "longsizhuo",
+          "avatarUrl": "https://avatars.githubusercontent.com/u/114939201?v=4",
+          "htmlUrl": "https://github.com/longsizhuo"
         },
         {
           "githubId": "150361711",
@@ -2705,6 +2714,23 @@
       ]
     },
     {
+      "docId": "ld59a8z1v84ig4rlr0p0n2a9",
+      "path": "app/docs/jobs/event-keynote/coffee-chat.md",
+      "contributorStats": {
+        "163523387": 2
+      },
+      "contributors": [
+        {
+          "githubId": "163523387",
+          "contributions": 2,
+          "lastContributedAt": "2025-11-01T10:30:20.000Z",
+          "login": "Mira190",
+          "avatarUrl": "https://avatars.githubusercontent.com/u/163523387?v=4",
+          "htmlUrl": "https://github.com/Mira190"
+        }
+      ]
+    },
+    {
       "docId": "s8w3d2p5k9m4h7z1x0c2a8r6",
       "path": "app/docs/jobs/event-keynote/event-takeway.md",
       "contributorStats": {
@@ -2804,13 +2830,13 @@
       "path": "app/docs/jobs/interview-prep/preparations-to-get-an-offer-as-a-student.mdx",
       "contributorStats": {
         "90535573": 1,
-        "114939201": 1
+        "114939201": 2
       },
       "contributors": [
         {
           "githubId": "114939201",
-          "contributions": 1,
-          "lastContributedAt": "2025-10-08T08:46:02.000Z",
+          "contributions": 2,
+          "lastContributedAt": "2025-10-27T18:01:38.000Z",
           "login": "longsizhuo",
           "avatarUrl": "https://avatars.githubusercontent.com/u/114939201?v=4",
           "htmlUrl": "https://github.com/longsizhuo"
