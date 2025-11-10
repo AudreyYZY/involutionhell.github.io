@@ -1,10 +1,11 @@
 ---
 title: Sword finger Offer II 021. Delete the countdown of the linked list n Node.md
-date: '2024.01.01 0:00'
+date: "2024.01.01 0:00"
 tags:
   - - Python
   - - answer
 abbrlink: 3ed2f01c
+docId: qfvqmc1exp066falnsg97c5m
 ---
 
 # topic：
@@ -12,6 +13,7 @@ abbrlink: 3ed2f01c
 [Sword finger Offer II 021. Delete the countdown of the linked list n Node.md](https://leetcode.cn/problems/SLwz0R/description/)
 
 # Thought：
+
 Double pointer（Sliding window algorithm）。
 In this method，We first created a virtual head node dummy，And point it to the original head point head。
 Then we use two pointers fast and slow，Will fast Poor movement move forward n step。
@@ -21,9 +23,10 @@ at this time，slow pointer指向倒数第 n+1 Node，我们Will其 next pointer
 at last，We return virtual head nodes next pointer，It points to delete the countdown n Node后的链表的Head node。
 
 At the beginning, according toCLinked
+
 # Code：
 
-```python   Sliding window algorithm
+```python Sliding window algorithm
 class Solution:
     def removeNthFromEnd(self, head: Optional[ListNode], n: int) -> Optional[ListNode]:
         # Create a virtual head node
