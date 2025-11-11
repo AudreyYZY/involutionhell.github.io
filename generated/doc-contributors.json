@@ -1,8 +1,8 @@
 {
   "repo": "InvolutionHell/involutionhell",
-  "generatedAt": "2025-11-10T03:06:22.583Z",
+  "generatedAt": "2025-11-11T03:04:30.448Z",
   "docsDir": "app/docs",
-  "totalDocs": 108,
+  "totalDocs": 109,
   "results": [
     {
       "docId": "ue27z7z95yzw3lhhfj7nit1c",
@@ -2052,8 +2052,8 @@
       ]
     },
     {
-      "docId": "qfvqmc1exp066falnsg97c5m",
-      "path": "app/docs/CommunityShare/Leetcode/剑指 Offer II 021. 删除链表的倒数第 n 个结点_translated.md",
+      "docId": "ryp6s59uwc10w2dywgs6f66h",
+      "path": "app/docs/CommunityShare/Leetcode/80_translated.md",
       "contributorStats": {
         "114939201": 1
       },
@@ -2061,7 +2061,24 @@
         {
           "githubId": "114939201",
           "contributions": 1,
-          "lastContributedAt": "2025-11-10T03:00:27.000Z",
+          "lastContributedAt": "2025-11-11T03:00:03.000Z",
+          "login": "longsizhuo",
+          "avatarUrl": "https://avatars.githubusercontent.com/u/114939201?v=4",
+          "htmlUrl": "https://github.com/longsizhuo"
+        }
+      ]
+    },
+    {
+      "docId": "qfvqmc1exp066falnsg97c5m",
+      "path": "app/docs/CommunityShare/Leetcode/剑指 Offer II 021. 删除链表的倒数第 n 个结点_translated.md",
+      "contributorStats": {
+        "114939201": 2
+      },
+      "contributors": [
+        {
+          "githubId": "114939201",
+          "contributions": 2,
+          "lastContributedAt": "2025-11-10T03:06:23.000Z",
           "login": "longsizhuo",
           "avatarUrl": "https://avatars.githubusercontent.com/u/114939201?v=4",
           "htmlUrl": "https://github.com/longsizhuo"
