@@ -1,8 +1,8 @@
 {
   "repo": "InvolutionHell/involutionhell",
-  "generatedAt": "2025-11-11T03:04:30.448Z",
+  "generatedAt": "2025-11-12T03:05:31.078Z",
   "docsDir": "app/docs",
-  "totalDocs": 109,
+  "totalDocs": 110,
   "results": [
     {
       "docId": "ue27z7z95yzw3lhhfj7nit1c",
@@ -2035,6 +2035,23 @@
       ]
     },
     {
+      "docId": "bsf0yz1zrmlz7masrdmq8fq6",
+      "path": "app/docs/CommunityShare/Leetcode/1653. 使字符串平衡的最少删除次数_translated.md",
+      "contributorStats": {
+        "114939201": 1
+      },
+      "contributors": [
+        {
+          "githubId": "114939201",
+          "contributions": 1,
+          "lastContributedAt": "2025-11-12T03:00:17.000Z",
+          "login": "longsizhuo",
+          "avatarUrl": "https://avatars.githubusercontent.com/u/114939201?v=4",
+          "htmlUrl": "https://github.com/longsizhuo"
+        }
+      ]
+    },
+    {
       "docId": "clx9mmqqvxipdfamqciuo146",
       "path": "app/docs/CommunityShare/Leetcode/2679.矩阵中的和_translated.md",
       "contributorStats": {
@@ -2055,13 +2072,13 @@
       "docId": "ryp6s59uwc10w2dywgs6f66h",
       "path": "app/docs/CommunityShare/Leetcode/80_translated.md",
       "contributorStats": {
-        "114939201": 1
+        "114939201": 2
       },
       "contributors": [
         {
           "githubId": "114939201",
-          "contributions": 1,
-          "lastContributedAt": "2025-11-11T03:00:03.000Z",
+          "contributions": 2,
+          "lastContributedAt": "2025-11-11T03:04:31.000Z",
           "login": "longsizhuo",
           "avatarUrl": "https://avatars.githubusercontent.com/u/114939201?v=4",
           "htmlUrl": "https://github.com/longsizhuo"
