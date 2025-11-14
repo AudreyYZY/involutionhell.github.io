@@ -443,3 +443,134 @@
     display: none;
   }
 }
+
+/* ========================================
+   Milkdown 编辑器样式优化
+   ======================================== */
+
+/* 编辑器容器样式 */
+.milkdown {
+  @apply w-full;
+}
+
+/* 编辑器主体 */
+.milkdown .editor {
+  @apply min-h-[500px] p-4 outline-none;
+  font-family: var(--font-geist-sans), sans-serif;
+}
+
+/* 编辑器焦点状态 */
+.milkdown .editor:focus,
+.milkdown .editor:focus-visible {
+  @apply outline-none ring-0;
+}
+
+/* Markdown 元素样式 */
+.milkdown .paragraph {
+  @apply my-3 leading-7;
+}
+
+.milkdown h1,
+.milkdown h2,
+.milkdown h3,
+.milkdown h4,
+.milkdown h5,
+.milkdown h6 {
+  @apply font-bold mt-6 mb-4;
+  font-family: var(--font-geist-sans), sans-serif;
+}
+
+.milkdown h1 {
+  @apply text-3xl;
+}
+.milkdown h2 {
+  @apply text-2xl;
+}
+.milkdown h3 {
+  @apply text-xl;
+}
+.milkdown h4 {
+  @apply text-lg;
+}
+
+.milkdown ul,
+.milkdown ol {
+  @apply my-4 pl-6;
+}
+
+.milkdown li {
+  @apply my-2;
+}
+
+.milkdown code {
+  @apply px-1.5 py-0.5 rounded bg-muted text-sm font-mono;
+}
+
+.milkdown pre {
+  @apply my-4 p-4 rounded-lg bg-muted overflow-x-auto;
+}
+
+.milkdown pre code {
+  @apply p-0 bg-transparent;
+}
+
+.milkdown blockquote {
+  @apply my-4 pl-4 border-l-4 border-primary/30 italic text-muted-foreground;
+}
+
+.milkdown a {
+  @apply text-primary underline underline-offset-2 hover:text-primary/80;
+}
+
+.milkdown img {
+  @apply my-4 rounded-lg max-w-full h-auto;
+}
+
+.milkdown hr {
+  @apply my-6 border-border;
+}
+
+.milkdown table {
+  @apply my-4 w-full border-collapse;
+}
+
+.milkdown th,
+.milkdown td {
+  @apply border border-border px-4 py-2;
+}
+
+.milkdown th {
+  @apply bg-muted font-semibold;
+}
+
+/* Dark mode 优化 */
+@media (prefers-color-scheme: dark) {
+  .dark .milkdown .editor {
+    @apply text-foreground;
+  }
+
+  .dark .milkdown code {
+    @apply bg-muted/50;
+  }
+
+  .dark .milkdown pre {
+    @apply bg-muted/30;
+  }
+}
+
+/* 响应式优化 */
+@media (max-width: 768px) {
+  .milkdown .editor {
+    @apply p-3 text-sm;
+  }
+
+  .milkdown h1 {
+    @apply text-2xl;
+  }
+  .milkdown h2 {
+    @apply text-xl;
+  }
+  .milkdown h3 {
+    @apply text-lg;
+  }
+}
