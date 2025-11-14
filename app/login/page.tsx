@@ -1,10 +1,10 @@
 import { SignInButton } from "@/app/components/SignInButton";
 
 type LoginPageProps = {
-  searchParams?: {
+  searchParams: Promise<{
     redirectTo?: string | string[];
     callbackUrl?: string | string[];
-  };
+  }>;
 };
 
 const FALLBACK_CALLBACK_URL = "/";
@@ -17,7 +17,7 @@ const coerceSearchParam = (
 };
 
 const resolveRedirectTarget = (
-  params: LoginPageProps["searchParams"],
+  params: Awaited<LoginPageProps["searchParams"]>,
 ): string => {
   const redirectTo =
     coerceSearchParam(params?.redirectTo) ??
@@ -25,8 +25,9 @@ const resolveRedirectTarget = (
   return redirectTo || FALLBACK_CALLBACK_URL;
 };
 
-export default function LoginPage({ searchParams }: LoginPageProps) {
-  const redirectTarget = resolveRedirectTarget(searchParams);
+export default async function LoginPage({ searchParams }: LoginPageProps) {
+  const params = await searchParams;
+  const redirectTarget = resolveRedirectTarget(params);
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-background">
