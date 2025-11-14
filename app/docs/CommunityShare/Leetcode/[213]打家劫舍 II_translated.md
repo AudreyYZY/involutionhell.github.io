@@ -1,19 +1,21 @@
 ---
 title: 213.Hiccup II
-date: '2024.01.01 0:00'
+date: "2024.01.01 0:00"
 tags:
   - Python
   - answer
   - Array
   - Dynamic planning
 abbrlink: 85beb0bf
+docId: rv6egbynttb4mt1n0412bue0
 ---
-# topic：
 
+# topic：
 
 [topic链接](https://leetcode-cn.com/problems/house-robber-ii/)
 
 # Thought：
+
 这一次终于懂一点Dynamic planning了，The first is the youngest problem，I first thought it was to consider where to start，Start from the first or the second one（这刚好是和Hiccup1Difference）。
 但实际上最小子问题还是和Hiccup1Same：Whether to rob the current house。
 First we set one`dp`Array，`dp[i]`Indicate robbery to the first`i`The maximum return when a house。

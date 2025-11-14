@@ -1,8 +1,8 @@
 {
   "repo": "InvolutionHell/involutionhell",
-  "generatedAt": "2025-11-13T03:06:20.335Z",
+  "generatedAt": "2025-11-14T03:05:54.670Z",
   "docsDir": "app/docs",
-  "totalDocs": 111,
+  "totalDocs": 112,
   "results": [
     {
       "docId": "ue27z7z95yzw3lhhfj7nit1c",
@@ -2018,6 +2018,23 @@
       ]
     },
     {
+      "docId": "rv6egbynttb4mt1n0412bue0",
+      "path": "app/docs/CommunityShare/Leetcode/[213]打家劫舍 II_translated.md",
+      "contributorStats": {
+        "114939201": 1
+      },
+      "contributors": [
+        {
+          "githubId": "114939201",
+          "contributions": 1,
+          "lastContributedAt": "2025-11-14T03:00:17.000Z",
+          "login": "longsizhuo",
+          "avatarUrl": "https://avatars.githubusercontent.com/u/114939201?v=4",
+          "htmlUrl": "https://github.com/longsizhuo"
+        }
+      ]
+    },
+    {
       "docId": "p8igr19xfxnuyo2lpngnr6fg",
       "path": "app/docs/CommunityShare/Leetcode/1234. 替换子串得到平衡字符串_translated.md",
       "contributorStats": {
@@ -2055,13 +2072,13 @@
       "docId": "a6inw303oslb7i5tcqj5xxx4",
       "path": "app/docs/CommunityShare/Leetcode/2270. Number of Ways to Split Array.md",
       "contributorStats": {
-        "114939201": 1
+        "114939201": 2
       },
       "contributors": [
         {
           "githubId": "114939201",
-          "contributions": 1,
-          "lastContributedAt": "2025-11-13T03:00:08.000Z",
+          "contributions": 2,
+          "lastContributedAt": "2025-11-13T03:06:21.000Z",
           "login": "longsizhuo",
           "avatarUrl": "https://avatars.githubusercontent.com/u/114939201?v=4",
           "htmlUrl": "https://github.com/longsizhuo"
