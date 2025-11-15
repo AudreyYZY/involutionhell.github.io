@@ -6,6 +6,7 @@ tags:
   - Python
   - Binary Search
 abbrlink: a29b0a05
+docId: fostlzqqx6l10qz1egd8dw5m
 ---
 
 # Description:
@@ -20,13 +21,14 @@ https://interunia.unswcpmsoc.com/task/Counting%20Stars/
 - The positions of fixed stars remain unchanged.
 
 Therefore, we need to maintain a list of the **last y-coordinate of the current chain**.
+
 1. **Sort the points**: Sort them by increasing x coordinates.
 2. **Initialization**: Create an empty list `last_y` to store the last y-coordinate of each chain.
 3. **Traverse the set of points**:
-    - For each point (x, y):
-        - Use `bisect_right` to find the first position in `last_y` that is greater than the current y.
-        - If the index is less than the length of `last_y`, it means there is an existing chain that can accommodate the current point, so we update the last y-coordinate of that chain to the current y.
-        - If the index is equal to the length of `last_y`, it means no suitable chain is found, so we need to create a new chain and add the current y to `last_y`.
+   - For each point (x, y):
+     - Use `bisect_right` to find the first position in `last_y` that is greater than the current y.
+     - If the index is less than the length of `last_y`, it means there is an existing chain that can accommodate the current point, so we update the last y-coordinate of that chain to the current y.
+     - If the index is equal to the length of `last_y`, it means no suitable chain is found, so we need to create a new chain and add the current y to `last_y`.
 
 # Code:
 
