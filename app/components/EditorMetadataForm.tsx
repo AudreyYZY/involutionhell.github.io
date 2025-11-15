@@ -76,9 +76,14 @@ export function EditorMetadataForm() {
           </Label>
           <Input
             id="tags"
+            type="text"
             placeholder="算法, 系统设计, React"
             value={tags.join(", ")}
             onChange={(e) => handleTagsChange(e.target.value)}
+            autoComplete="off"
+            autoCorrect="off"
+            autoCapitalize="off"
+            spellCheck="false"
           />
         </div>
 

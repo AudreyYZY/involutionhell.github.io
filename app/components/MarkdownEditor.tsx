@@ -49,8 +49,9 @@ export function MarkdownEditor() {
           return blobUrl;
         };
 
-        // 配置图片上传功能
         const imageBlockConfig: ImageBlockFeatureConfig = {
+          // 通用图片上传处理
+          onUpload: handleImageUpload,
           // 行内图片上传
           inlineOnUpload: handleImageUpload,
           // 块级图片上传
