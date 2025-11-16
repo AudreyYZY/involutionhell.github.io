@@ -14,6 +14,7 @@ import {
 import { Input } from "@/components/ui/input";
 import { ExternalLink, Sparkles } from "lucide-react";
 import styles from "./Contribute.module.css";
+import { useRouter } from "next/navigation";
 
 // --- antd
 import { TreeSelect } from "antd";
@@ -45,6 +46,7 @@ Write your content here.
 }
 
 export function Contribute() {
+  const router = useRouter();
   const [open, setOpen] = useState(false);
   const [tree, setTree] = useState<DirNode[]>([]);
   const [loading, setLoading] = useState(false);
@@ -145,6 +147,10 @@ export function Contribute() {
                      bg-gradient-to-r from-sky-300 via-sky-400 to-blue-600
                      dark:from-indigo-950 dark:via-slate-900 dark:to-black
                      hover:shadow-[0_25px_60px_-12px] hover:scale-[1.03] transition-all duration-300 ease-out"
+            onClick={(event) => {
+              event.preventDefault();
+              router.push("/editor");
+            }}
           >
             {/* Day gradient shimmer */}
             <span
