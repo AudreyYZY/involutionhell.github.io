@@ -1,5 +1,7 @@
 "use client";
 
+import { useEffect, useRef, useState } from "react";
+
 import { useEditorStore } from "@/lib/editor-store";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/app/components/ui/label";
@@ -21,26 +23,35 @@ export function EditorMetadataForm() {
     setFilename,
   } = useEditorStore();
 
-  // 处理标签输入（逗号分隔）- 允许最后一个空标签存在
+  const [tagsInputValue, setTagsInputValue] = useState(() => tags.join(", "));
+  const skipNextSync = useRef(false);
+
+  useEffect(() => {
+    if (skipNextSync.current) {
+      skipNextSync.current = false;
+      return;
+    }
+    setTagsInputValue(tags.join(", "));
+  }, [tags]);
+
+  // 处理标签输入（逗号分隔）
   const handleTagsChange = (value: string) => {
-    const tagArray = value.split(",").map((tag) => tag.trim());
+    setTagsInputValue(value);
+    const processedTags = value
+      .split(",")
+      .map((tag) => tag.trim())
+      .filter((tag) => tag.length > 0);
 
-    // 允许最后一个空标签存在（表示正在输入新标签）
-    const processedTags =
-      tagArray.length > 0 && tagArray[tagArray.length - 1] === ""
-        ? tagArray
-            .slice(0, -1)
-            .filter((tag) => tag.length > 0)
-            .concat("")
-        : tagArray.filter((tag) => tag.length > 0);
-
+    skipNextSync.current = true;
     setTags(processedTags);
   };
 
-  // 处理标签输入框失去焦点 - 过滤所有空标签
+  // 处理标签输入框失去焦点 - 过滤所有空标签并同步展示值
   const handleTagsBlur = () => {
     const filteredTags = tags.filter((tag) => tag.length > 0);
+    skipNextSync.current = true;
     setTags(filteredTags);
+    setTagsInputValue(filteredTags.join(", "));
   };
 
   // 自动添加 .md 后缀
@@ -90,7 +101,7 @@ export function EditorMetadataForm() {
           <Input
             id="tags"
             placeholder="算法, 系统设计, React"
-            value={tags.join(", ")}
+            value={tagsInputValue}
             onChange={(e) => handleTagsChange(e.target.value)}
             onBlur={handleTagsBlur}
           />
