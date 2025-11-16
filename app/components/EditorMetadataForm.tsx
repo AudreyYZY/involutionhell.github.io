@@ -21,13 +21,26 @@ export function EditorMetadataForm() {
     setFilename,
   } = useEditorStore();
 
-  // 处理标签输入（逗号分隔）
+  // 处理标签输入（逗号分隔）- 允许最后一个空标签存在
   const handleTagsChange = (value: string) => {
-    const tagArray = value
-      .split(",")
-      .map((tag) => tag.trim())
-      .filter((tag) => tag.length > 0);
-    setTags(tagArray);
+    const tagArray = value.split(",").map((tag) => tag.trim());
+
+    // 允许最后一个空标签存在（表示正在输入新标签）
+    const processedTags =
+      tagArray.length > 0 && tagArray[tagArray.length - 1] === ""
+        ? tagArray
+            .slice(0, -1)
+            .filter((tag) => tag.length > 0)
+            .concat("")
+        : tagArray.filter((tag) => tag.length > 0);
+
+    setTags(processedTags);
+  };
+
+  // 处理标签输入框失去焦点 - 过滤所有空标签
+  const handleTagsBlur = () => {
+    const filteredTags = tags.filter((tag) => tag.length > 0);
+    setTags(filteredTags);
   };
 
   // 自动添加 .md 后缀
@@ -76,14 +89,10 @@ export function EditorMetadataForm() {
           </Label>
           <Input
             id="tags"
-            type="text"
             placeholder="算法, 系统设计, React"
             value={tags.join(", ")}
             onChange={(e) => handleTagsChange(e.target.value)}
-            autoComplete="off"
-            autoCorrect="off"
-            autoCapitalize="off"
-            spellCheck="false"
+            onBlur={handleTagsBlur}
           />
         </div>
 
