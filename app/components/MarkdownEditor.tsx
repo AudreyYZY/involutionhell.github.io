@@ -182,7 +182,7 @@ export const MarkdownEditor = forwardRef<
   }, [appendFile, cleanupUnreferenced, clearAll, setMarkdown]);
 
   return (
-    <div className="rounded-lg border border-border bg-card shadow-sm overflow-hidden">
+    <div className="rounded-lg border border-border bg-card shadow-sm overflow-visible">
       <div
         ref={editorRef}
         className="min-h-[500px] prose prose-slate dark:prose-invert max-w-none p-4"
