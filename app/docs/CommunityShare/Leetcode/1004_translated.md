@@ -1,18 +1,16 @@
 ---
 title: 1004.Maximum continuity1Number III Maximum continuity1Number III
-date: '2022.12.07-01:15'
+date: "2022.12.07-01:15"
 tags:
   - - Python
   - - solved
     - answer
 abbrlink: ed19b576
+docId: ytg2bds2dnhzw37nrb3vassy
 ---
 
-
-
-
-
 Today's daily question is too difficult，So find the problem by yourself。Today's question is a hash table+Sliding window algorithm，虽然感觉只用了Sliding window algorithm。
+
 ```python
 
 class Solution:
@@ -46,6 +44,7 @@ class Solution:
 
 This is my approach at the beginning，Although the double pointer is used，But there is no flexibility，Very empty feeling，Very dry slide。
 the following[@Lincoln](/u/lincoln)@Lincoln Big practice，Just as one record of yourself，不作为我的answer发表
+
 ```
 class Solution:
     def longestOnes(self, nums: List[int], k: int) -> int:
@@ -61,9 +60,10 @@ class Solution:
         while right < n:
             if nums[right]== 1: o_res += 1
             if right-left+1- o_res > k:
-                if nums[left]== 1: o_res -= 1 
+                if nums[left]== 1: o_res -= 1
                 left += 1
             right += 1
         return right - left
 ```
+
 Look atLincolnBigThinking，very clearly，remember
