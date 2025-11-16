@@ -30,10 +30,7 @@ export function getMDXComponents(components?: MDXComponents): MDXComponents {
   return {
     ...defaultMdxComponents,
     // 覆盖默认的 img 映射，使用原生 <img> 标签而不是 Next.js Image 组件
-    img: (props) => (
-      // eslint-disable-next-line @next/next/no-img-element
-      <img {...props} alt={props.alt || ""} />
-    ),
+    img: (props) => <img {...props} alt={props.alt || ""} />,
     ...components,
   };
 }
