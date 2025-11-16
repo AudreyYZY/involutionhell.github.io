@@ -3,6 +3,12 @@
 import { useEffect, useRef, useLayoutEffect } from "react";
 import { Crepe } from "@milkdown/crepe";
 import type { ImageBlockFeatureConfig } from "@milkdown/crepe/feature/image-block";
+import {
+  upload,
+  uploadConfig,
+  type Uploader,
+} from "@milkdown/kit/plugin/upload";
+import type { Node as ProsemirrorNode } from "@milkdown/kit/prose/model";
 import { useEditorStore } from "@/lib/editor-store";
 
 // 导入 Crepe 主题样式
@@ -25,6 +31,7 @@ export function MarkdownEditor() {
   const { markdown, setMarkdown, addImage, clearImages } = useEditorStore();
 
   useLayoutEffect(() => {
+    // 编辑器只在组件挂载时初始化一次，不应依赖 store 的变化
     if (!editorRef.current || isLoadingRef.current) return;
 
     isLoadingRef.current = true;
@@ -58,15 +65,50 @@ export function MarkdownEditor() {
           blockOnUpload: handleImageUpload,
         };
 
+        // 统一处理粘贴/拖拽的图片上传，复用延迟上传逻辑
+        const customUploader: Uploader = async (files, schema) => {
+          const imageType = schema.nodes.image;
+          if (!imageType) {
+            throw new Error("Milkdown schema 中缺少 image 节点");
+          }
+
+          const nodes: ProsemirrorNode[] = [];
+          for (const file of Array.from(files)) {
+            if (!file || !file.type.startsWith("image/")) continue;
+
+            const src = await handleImageUpload(file);
+            const node = imageType.createAndFill({
+              src,
+              alt: file.name,
+            });
+            if (node) {
+              nodes.push(node);
+            }
+          }
+
+          return nodes;
+        };
+
         // 创建 Crepe 编辑器实例，配置图片上传
         const crepe = new Crepe({
           root: editorRef.current!,
           defaultValue:
             markdown ||
-            "# 开始写作...\n\n在这里输入你的 Markdown 内容。\n\n支持粘贴和拖拽图片！",
+            "# 开始写作...\n\n在这里输入你的 Markdown 内容。\n\n支持粘贴图片！",
           featureConfigs: {
             [Crepe.Feature.ImageBlock]: imageBlockConfig,
           },
+        });
+
+        crepe.editor.config((ctx) => {
+          ctx.update(uploadConfig.key, (prev) => ({
+            ...prev,
+            enableHtmlFileUploader: true,
+            uploader: customUploader,
+          }));
+        });
+        upload.forEach((plugin) => {
+          crepe.editor.use(plugin);
         });
 
         // 创建编辑器
