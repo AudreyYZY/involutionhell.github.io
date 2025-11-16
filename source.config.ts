@@ -1,6 +1,8 @@
 import { defineDocs, defineConfig } from "fumadocs-mdx/config";
 import remarkMath from "remark-math";
 import rehypeKatex from "rehype-katex";
+import { visit } from "unist-util-visit";
+import type { Root } from "mdast";
 
 /**
  * @description: 定义文档根目录
@@ -10,6 +12,22 @@ import rehypeKatex from "rehype-katex";
 export const docs = defineDocs({
   dir: "app/docs",
 });
+
+/**
+ * Remark 插件：规范化代码块语言标识符
+ * @description: 将所有代码块的语言标识符转为小写，解决 Shiki 不识别大写语言名的问题
+ * 例如：```JavaScript → ```javascript
+ */
+function remarkNormalizeCodeLang() {
+  return (tree: Root) => {
+    visit(tree, "code", (node) => {
+      if (node.lang) {
+        // 将语言标识符转为小写
+        node.lang = node.lang.toLowerCase();
+      }
+    });
+  };
+}
 
 /**
  * Fumadocs 图片尺寸探测逻辑控制
@@ -63,8 +81,8 @@ const imageOptions = shouldForceRemote
  */
 export default defineConfig({
   mdxOptions: {
-    // 支持 LaTeX 公式
-    remarkPlugins: [remarkMath],
+    // 支持 LaTeX 公式 + 规范化代码块语言标识符
+    remarkPlugins: [remarkMath, remarkNormalizeCodeLang],
 
     // 宽松的 KaTeX 渲染，不因轻微语法错误中断
     rehypePlugins: (v) => [[rehypeKatex, { strict: false }], ...v],

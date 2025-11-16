@@ -170,6 +170,9 @@ importers:
       "@tailwindcss/postcss":
         specifier: ^4.1.13
         version: 4.1.13
+      "@types/mdast":
+        specifier: ^4.0.4
+        version: 4.0.4
       "@types/node":
         specifier: latest
         version: 24.5.2
@@ -233,6 +236,9 @@ importers:
       typescript-eslint:
         specifier: ^8.46.2
         version: 8.46.2(eslint@9.36.0(jiti@2.5.1))(typescript@5.9.2)
+      unist-util-visit:
+        specifier: ^5.0.0
+        version: 5.0.0
       vercel:
         specifier: ^48.8.0
         version: 48.8.0(rollup@4.52.5)(typescript@5.9.2)
