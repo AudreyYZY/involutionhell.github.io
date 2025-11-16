@@ -30,54 +30,57 @@ function remarkNormalizeCodeLang() {
 }
 
 /**
- * Fumadocs 图片尺寸探测逻辑控制
- * @description: Fumadocs 在构建时默认会尝试访问远程图片 (external URLs)
- * 以自动获取 width / height，避免首屏布局抖动。
+ * CRITICAL: Fumadocs 图片处理配置
  *
- * 但问题是：
- * - 在国内网络下访问 GitHub / Unsplash / Vercel CDN 等图床常常超时；
- * - 离线或 VPN 断线时，本地 dev 会卡很久；
- * - 所以我们需要在 dev 或明确指定时禁用远程探测。
+ * 为什么禁用远程图片尺寸探测（external: false）：
  *
- * 可通过环境变量 DOCS_REMOTE_IMAGE_SIZE 控制：
- *   - "force"   → 强制请求远程尺寸，即使失败也抛错；
- *   - "disable" → 完全禁用远程请求，仅依赖手动声明的宽高；
- *   - 未设置    → 在开发环境自动禁用，在生产环境启用（但忽略错误）。
+ * 1. Vercel 配额限制
+ *    - 网站部署在 Vercel 上，Next.js Image 优化需要消耗配额
+ *    - Vercel 免费计划：每月 1000 次源图片优化
+ *    - 我们的配额已耗尽，因此在 next.config.mjs 中设置了 unoptimized: true
+ *    - 既然不使用 Next.js Image 优化，就没必要在构建时获取远程图片尺寸
+ *
+ * 2. 网络性能问题
+ *    - 国内网络访问 GitHub/Unsplash/Vercel CDN 等图床常常超时
+ *    - 离线或 VPN 断线时，本地 dev 会卡很久
+ *    - 获取尺寸失败会导致构建时报错：missing required "width" property
+ *
+ * 3. 编辑器和用户投稿场景
+ *    - 编辑器生成的内容和用户投稿都直接使用 ![](url) 语法
+ *    - 不包含手动指定的 width/height 属性
+ *    - 如果启用远程探测，网络失败时会导致构建失败
+ *
+ * 影响：
+ * - ✅ 构建速度快（无网络请求）
+ * - ✅ 不依赖网络状况，构建稳定
+ * - ✅ 图片仍然正常显示（通过 <img> 标签）
+ * - ⚠️  可能有轻微的布局抖动（CLS），但可以通过 CSS 缓解
+ *
+ * 相关配置：
+ * - next.config.mjs: unoptimized: true（禁用 Next.js 图片优化）
+ * - 本文件: external: false（禁用远程尺寸探测）
+ *
+ * 如果未来：
+ * - 升级到 Vercel 付费计划（有更多图片优化配额）
+ * - 或迁移到自托管（不受 Vercel 限制）
+ * 可以考虑：
+ * 1. 在 next.config.mjs 中移除 unoptimized: true
+ * 2. 在本文件中设置 external: true
+ * 3. 但需要确保网络稳定，或使用环境变量按需控制
  */
-const remoteImageMode = process.env.DOCS_REMOTE_IMAGE_SIZE;
-
-// 是否“强制开启远程尺寸探测”模式
-const shouldForceRemote = remoteImageMode === "force";
-
-// 是否“禁用远程尺寸探测”模式
-const shouldDisableRemote =
-  // 显式设置为 disable
-  remoteImageMode === "disable" ||
-  // 或者：未强制开启且当前为 dev 环境
-  (!shouldForceRemote && process.env.NODE_ENV === "development");
+const imageOptions = {
+  onError: "ignore" as const, // 即使获取尺寸失败也不阻断构建
+  external: false as const, // 禁用远程图片尺寸探测（关键配置）
+};
 
 /**
- * @name: 构建最终传给 Fumadocs 的图片选项
- * @description:
+ * MDX 全局配置
  *
- * Fumadocs 内部会读取 remarkImageOptions：
- *   - external: false  → 不访问远程图片 URL
- *   - onError: "ignore" → 拉取尺寸失败时忽略错误（不阻断构建）
- */
-const imageOptions = shouldForceRemote
-  ? undefined // 强制模式下交由 Fumadocs 默认行为（报错）
-  : {
-      onError: "ignore" as const, // 失败时忽略（默认安全模式）
-      ...(shouldDisableRemote && { external: false as const }), // 禁用远程请求
-    };
-
-/**
- * @name:MDX 全局配置
- *
- * @description: 包含：
+ * 包含：
  * - remarkMath：启用 Markdown 数学语法支持 ($...$, $$...$$)
+ * - remarkNormalizeCodeLang：将代码块语言标识符转为小写（解决 Shiki 大小写问题）
  * - rehypeKatex：使用 KaTeX 将数学公式渲染为 HTML（strict:false 更宽松）
- * - remarkImageOptions：控制远程图片尺寸探测行为（上方定义）
+ * - remarkImageOptions：图片处理配置（禁用远程尺寸探测，见上方注释）
  */
 export default defineConfig({
   mdxOptions: {
@@ -87,7 +90,7 @@ export default defineConfig({
     // 宽松的 KaTeX 渲染，不因轻微语法错误中断
     rehypePlugins: (v) => [[rehypeKatex, { strict: false }], ...v],
 
-    // 仅在 imageOptions 存在时传入（开发/禁用模式下生效）
-    ...(imageOptions && { remarkImageOptions: imageOptions }),
+    // 图片处理配置（禁用远程尺寸探测）
+    remarkImageOptions: imageOptions,
   },
 });
