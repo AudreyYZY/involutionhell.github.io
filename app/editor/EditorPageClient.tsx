@@ -2,9 +2,12 @@
 
 import { useEditorStore } from "@/lib/editor-store";
 import { EditorMetadataForm } from "@/app/components/EditorMetadataForm";
-import { MarkdownEditor } from "@/app/components/MarkdownEditor";
+import {
+  MarkdownEditor,
+  type MarkdownEditorHandle,
+} from "@/app/components/MarkdownEditor";
 import { Button } from "@/app/components/ui/button";
-import { useState } from "react";
+import { useCallback, useRef, useState } from "react";
 import Link from "next/link";
 import type { Session } from "next-auth";
 
@@ -18,8 +21,12 @@ interface EditorPageClientProps {
  */
 export function EditorPageClient({ session }: EditorPageClientProps) {
   const [isPublishing, setIsPublishing] = useState(false);
-  const { title, description, tags, filename, markdown, imageFileMap } =
-    useEditorStore();
+  const [imageCount, setImageCount] = useState(0);
+  const editorRef = useRef<MarkdownEditorHandle | null>(null);
+  const { title, filename, markdown } = useEditorStore();
+  const handleImageCountChange = useCallback((count: number) => {
+    setImageCount(count);
+  }, []);
 
   /**
    * 上传单个图片到 R2
@@ -85,17 +92,29 @@ export function EditorPageClient({ session }: EditorPageClientProps) {
       console.group("第二阶段：开始上传图片到 R2");
       console.log("文章标题:", title);
       console.log("文件名:", filename);
-      console.log("图片数量:", imageFileMap.size);
+      console.log("图片数量:", imageCount);
 
       let finalMarkdown = markdown;
 
       // 如果有图片，上传到 R2 并替换 URL
-      if (imageFileMap.size > 0) {
+      const editorHandle = editorRef.current;
+      if (!editorHandle) {
+        throw new Error("编辑器尚未就绪，无法上传图片");
+      }
+
+      const removedImages = editorHandle.removeUnreferencedImages(markdown);
+      if (removedImages > 0) {
+        console.log(`已清理 ${removedImages} 个未在 Markdown 中引用的图片`);
+      }
+
+      const imageEntries = Array.from(editorHandle.getImages().entries());
+
+      if (imageEntries.length > 0) {
         console.log("开始上传图片...");
 
         // 并发上传所有图片
-        const uploadPromises = Array.from(imageFileMap.entries()).map(
-          ([blobUrl, file]) => uploadImage(blobUrl, file),
+        const uploadPromises = imageEntries.map(([blobUrl, file]) =>
+          uploadImage(blobUrl, file),
         );
 
         const uploadResults = await Promise.all(uploadPromises);
@@ -123,7 +142,7 @@ export function EditorPageClient({ session }: EditorPageClientProps) {
 
       // 提示用户
       alert(
-        `第二阶段完成！\n\n文章：${title}\n图片已上传：${imageFileMap.size} 张\n\n详细信息请查看浏览器控制台。\n\n第三阶段将实现发布到 GitHub。`,
+        `第二阶段完成！\n\n文章：${title}\n图片已上传：${imageEntries.length} 张\n\n详细信息请查看浏览器控制台。\n\n第三阶段将实现发布到 GitHub。`,
       );
     } catch (error) {
       console.error("发布失败:", error);
@@ -158,10 +177,13 @@ export function EditorPageClient({ session }: EditorPageClientProps) {
           <div className="mb-2 flex items-center justify-between">
             <h2 className="text-lg font-semibold">文章内容</h2>
             <div className="text-sm text-muted-foreground">
-              {markdown.length} 字符 · {imageFileMap.size} 张图片
+              {markdown.length} 字符 · {imageCount} 张图片
             </div>
           </div>
-          <MarkdownEditor />
+          <MarkdownEditor
+            ref={editorRef}
+            onImagesChange={handleImageCountChange}
+          />
         </div>
 
         {/* 操作按钮 */}
