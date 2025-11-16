@@ -46,7 +46,7 @@ docId: vesefhhnj2ebu2oafxa3qmcg
 
 <br />
 
-```JavaScript
+```javascript
 import { useEditorStore } from "@/lib/editor-store";
 import { EditorMetadataForm } from "@/app/components/EditorMetadataForm";
 import {
