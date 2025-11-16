@@ -2,6 +2,7 @@
 
 import { useEditorStore } from "@/lib/editor-store";
 import { EditorMetadataForm } from "@/app/components/EditorMetadataForm";
+import { DocsDestinationForm } from "@/app/components/DocsDestinationForm";
 import {
   MarkdownEditor,
   type MarkdownEditorHandle,
@@ -10,9 +11,51 @@ import { Button } from "@/app/components/ui/button";
 import { useCallback, useRef, useState } from "react";
 import Link from "next/link";
 import type { Session } from "next-auth";
+import { buildDocsNewUrl } from "@/lib/github";
+import {
+  FILENAME_PATTERN,
+  ensureMarkdownExtension,
+  stripMarkdownExtension,
+} from "@/lib/submission";
 
 interface EditorPageClientProps {
   session: Session;
+}
+
+function buildFrontmatter({
+  title,
+  description,
+  tags,
+}: {
+  title: string;
+  description?: string;
+  tags?: string[];
+}) {
+  const safeTitle = JSON.stringify(title);
+  const safeDescription = JSON.stringify(description ?? "");
+  const date = new Date().toISOString().slice(0, 10);
+  const normalizedTags = (tags ?? [])
+    .map((tag) => tag.trim())
+    .filter((tag) => tag.length > 0);
+
+  const lines = [
+    "---",
+    `title: ${safeTitle}`,
+    `description: ${safeDescription}`,
+    `date: "${date}"`,
+  ];
+
+  if (normalizedTags.length > 0) {
+    lines.push(
+      "tags:",
+      ...normalizedTags.map((tag) => `  - ${JSON.stringify(tag)}`),
+    );
+  } else {
+    lines.push("tags: []");
+  }
+
+  lines.push("---");
+  return lines.join("\n");
 }
 
 /**
@@ -22,11 +65,14 @@ interface EditorPageClientProps {
 export function EditorPageClient({ session }: EditorPageClientProps) {
   const [isPublishing, setIsPublishing] = useState(false);
   const [imageCount, setImageCount] = useState(0);
+  const [destinationPath, setDestinationPath] = useState("");
   const editorRef = useRef<MarkdownEditorHandle | null>(null);
-  const { title, filename, markdown } = useEditorStore();
+  const { title, description, tags, filename, markdown, setFilename } =
+    useEditorStore();
   const handleImageCountChange = useCallback((count: number) => {
     setImageCount(count);
   }, []);
+  const previewFilename = filename ? ensureMarkdownExtension(filename) : "";
 
   /**
    * 上传单个图片到 R2
@@ -34,10 +80,8 @@ export function EditorPageClient({ session }: EditorPageClientProps) {
   const uploadImage = async (
     blobUrl: string,
     file: File,
+    articleSlug: string,
   ): Promise<{ blobUrl: string; publicUrl: string }> => {
-    // 生成文章 slug（从 filename 去除 .md 后缀）
-    const articleSlug = filename.replace(/\.md$/, "");
-
     // 1. 获取预签名 URL
     const response = await fetch("/api/upload", {
       method: "POST",
@@ -78,23 +122,53 @@ export function EditorPageClient({ session }: EditorPageClientProps) {
     setIsPublishing(true);
 
     try {
-      // 验证必填字段
-      if (!title) {
+      if (!title.trim()) {
         alert("请输入文章标题");
         return;
       }
 
-      if (!filename) {
+      if (!filename.trim()) {
         alert("请输入文件名");
         return;
       }
 
-      console.group("第二阶段：开始上传图片到 R2");
+      if (!destinationPath) {
+        alert("请选择投稿目录");
+        return;
+      }
+
+      const normalizedFilename = ensureMarkdownExtension(filename);
+      const filenameBase = stripMarkdownExtension(normalizedFilename);
+      if (!filenameBase || !FILENAME_PATTERN.test(filenameBase)) {
+        alert("文件名仅支持英文、数字、连字符或下划线，并需以字母或数字开头。");
+        return;
+      }
+
+      if (normalizedFilename !== filename) {
+        setFilename(normalizedFilename);
+      }
+
+      let githubDraftWindow: Window | null = null;
+      try {
+        githubDraftWindow = window.open("", "_blank");
+        if (githubDraftWindow) {
+          githubDraftWindow.document.title = "正在生成稿件…";
+          githubDraftWindow.document.body.innerHTML =
+            '<p style="font-family:system-ui;padding:16px;">正在生成 GitHub 草稿，请稍候…</p>';
+          githubDraftWindow.opener = null;
+        }
+      } catch {
+        githubDraftWindow = null;
+      }
+
+      console.group("发布流程：上传图片并生成 GitHub 草稿");
       console.log("文章标题:", title);
-      console.log("文件名:", filename);
+      console.log("文件名:", normalizedFilename);
+      console.log("投稿目录:", destinationPath);
       console.log("图片数量:", imageCount);
 
       let finalMarkdown = markdown;
+      const articleSlug = filenameBase;
 
       // 如果有图片，上传到 R2 并替换 URL
       const editorHandle = editorRef.current;
@@ -114,7 +188,7 @@ export function EditorPageClient({ session }: EditorPageClientProps) {
 
         // 并发上传所有图片
         const uploadPromises = imageEntries.map(([blobUrl, file]) =>
-          uploadImage(blobUrl, file),
+          uploadImage(blobUrl, file, articleSlug),
         );
 
         const uploadResults = await Promise.all(uploadPromises);
@@ -140,10 +214,28 @@ export function EditorPageClient({ session }: EditorPageClientProps) {
 
       console.groupEnd();
 
-      // 提示用户
-      alert(
-        `第二阶段完成！\n\n文章：${title}\n图片已上传：${imageEntries.length} 张\n\n详细信息请查看浏览器控制台。\n\n第三阶段将实现发布到 GitHub。`,
-      );
+      const frontmatter = buildFrontmatter({
+        title,
+        description,
+        tags,
+      });
+      const markdownBody = finalMarkdown.trimStart();
+      const finalContent =
+        markdownBody.length > 0
+          ? `${frontmatter}\n\n${markdownBody}`
+          : `${frontmatter}\n`;
+
+      const params = new URLSearchParams({
+        filename: normalizedFilename,
+        value: finalContent,
+      });
+      const githubUrl = buildDocsNewUrl(destinationPath, params);
+      if (githubDraftWindow) {
+        githubDraftWindow.location.href = githubUrl;
+      } else {
+        window.open(githubUrl, "_blank", "noopener,noreferrer");
+      }
+      alert("图片已上传并生成 GitHub 草稿，请在新标签页完成提交。");
     } catch (error) {
       console.error("发布失败:", error);
       alert(`发布失败：${error instanceof Error ? error.message : "未知错误"}`);
@@ -171,6 +263,7 @@ export function EditorPageClient({ session }: EditorPageClientProps) {
       <div className="space-y-6">
         {/* 元数据表单 */}
         <EditorMetadataForm />
+        <DocsDestinationForm onChange={setDestinationPath} />
 
         {/* Markdown 编辑器 */}
         <div>
@@ -189,10 +282,21 @@ export function EditorPageClient({ session }: EditorPageClientProps) {
         {/* 操作按钮 */}
         <div className="flex items-center justify-between rounded-lg border border-border bg-card p-4">
           <div className="text-sm text-muted-foreground">
-            {!title || !filename ? (
+            {!title.trim() || !filename.trim() ? (
               <span className="text-destructive">请填写标题和文件名</span>
+            ) : !destinationPath ? (
+              <span className="text-destructive">请选择投稿目录</span>
             ) : (
-              <span>准备发布到：{filename}</span>
+              <span>
+                将在{" "}
+                <code className="font-mono text-foreground">
+                  {destinationPath}
+                </code>{" "}
+                下创建{" "}
+                <code className="font-mono text-foreground">
+                  {previewFilename}
+                </code>
+              </span>
             )}
           </div>
 
@@ -211,7 +315,12 @@ export function EditorPageClient({ session }: EditorPageClientProps) {
 
             <Button
               onClick={handlePublish}
-              disabled={!title || !filename || isPublishing}
+              disabled={
+                !title.trim() ||
+                !filename.trim() ||
+                !destinationPath ||
+                isPublishing
+              }
             >
               {isPublishing ? "处理中..." : "发布文章"}
             </Button>
@@ -220,13 +329,13 @@ export function EditorPageClient({ session }: EditorPageClientProps) {
 
         {/* 提示信息 */}
         <div className="rounded-lg border border-green-200 bg-green-50 p-4 text-sm dark:border-green-900 dark:bg-green-950">
-          <h3 className="font-medium mb-2">第二阶段功能</h3>
+          <h3 className="font-medium mb-2">发布流程提示</h3>
           <ul className="space-y-1 text-muted-foreground list-disc list-inside">
-            <li>支持 Markdown 编辑和实时预览</li>
-            <li>支持粘贴和拖拽图片（图片以 blob URL 存储）</li>
-            <li>点击"发布文章"自动上传图片到 Cloudflare R2</li>
-            <li>自动替换 Markdown 中的 blob URL 为公开 URL</li>
-            <li>第三阶段将实现发布到 GitHub</li>
+            <li>填写标题、描述、标签与文件名，自动补全 .md 后缀</li>
+            <li>选择或新建投稿目录，目录结构与现有投稿机制一致</li>
+            <li>点击“发布文章”将自动上传图片并替换为线上 URL</li>
+            <li>系统会生成标准 Frontmatter，并打开 GitHub 新建页面</li>
+            <li>在 GitHub 页面确认内容后提交 PR 即可完成投稿</li>
           </ul>
         </div>
       </div>
