@@ -21,7 +21,53 @@ export function EditorPageClient({ session }: EditorPageClientProps) {
   const { title, description, tags, filename, markdown, imageFileMap } =
     useEditorStore();
 
-  const handlePublish = () => {
+  /**
+   * 上传单个图片到 R2
+   */
+  const uploadImage = async (
+    blobUrl: string,
+    file: File,
+  ): Promise<{ blobUrl: string; publicUrl: string }> => {
+    // 生成文章 slug（从 filename 去除 .md 后缀）
+    const articleSlug = filename.replace(/\.md$/, "");
+
+    // 1. 获取预签名 URL
+    const response = await fetch("/api/upload", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        filename: file.name,
+        contentType: file.type,
+        articleSlug,
+      }),
+    });
+
+    if (!response.ok) {
+      const error = await response.json();
+      throw new Error(error.error || "获取上传链接失败");
+    }
+
+    const { uploadUrl, publicUrl } = await response.json();
+
+    // 2. 上传文件到 R2
+    const uploadResponse = await fetch(uploadUrl, {
+      method: "PUT",
+      headers: {
+        "Content-Type": file.type,
+      },
+      body: file,
+    });
+
+    if (!uploadResponse.ok) {
+      throw new Error(`上传图片失败: ${uploadResponse.statusText}`);
+    }
+
+    return { blobUrl, publicUrl };
+  };
+
+  const handlePublish = async () => {
     setIsPublishing(true);
 
     try {
@@ -36,36 +82,52 @@ export function EditorPageClient({ session }: EditorPageClientProps) {
         return;
       }
 
-      // 第一阶段：仅在控制台输出数据
-      console.group("第一阶段：文章数据已准备就绪");
-      console.log("标题:", title);
-      console.log("描述:", description);
-      console.log("标签:", tags);
+      console.group("第二阶段：开始上传图片到 R2");
+      console.log("文章标题:", title);
       console.log("文件名:", filename);
-      console.log("Markdown 长度:", markdown.length, "字符");
       console.log("图片数量:", imageFileMap.size);
 
-      // 列出所有图片信息
+      let finalMarkdown = markdown;
+
+      // 如果有图片，上传到 R2 并替换 URL
       if (imageFileMap.size > 0) {
-        console.group("图片列表");
-        imageFileMap.forEach((file, blobUrl) => {
-          console.log(`- ${file.name} (${(file.size / 1024).toFixed(2)} KB)`);
-          console.log(`  Blob URL: ${blobUrl}`);
+        console.log("开始上传图片...");
+
+        // 并发上传所有图片
+        const uploadPromises = Array.from(imageFileMap.entries()).map(
+          ([blobUrl, file]) => uploadImage(blobUrl, file),
+        );
+
+        const uploadResults = await Promise.all(uploadPromises);
+
+        console.log("所有图片上传完成！");
+        console.group("图片 URL 映射");
+        uploadResults.forEach(({ blobUrl, publicUrl }) => {
+          console.log(`${blobUrl} -> ${publicUrl}`);
         });
         console.groupEnd();
+
+        // 替换 Markdown 中的 blob URL 为公开 URL
+        uploadResults.forEach(({ blobUrl, publicUrl }) => {
+          finalMarkdown = finalMarkdown.replaceAll(blobUrl, publicUrl);
+        });
+
+        console.log("Markdown 中的 blob URL 已替换为公开 URL");
       }
 
-      // 显示 Markdown 内容预览
-      console.group("Markdown 内容预览");
-      console.log(markdown.substring(0, 500) + "...");
+      console.group("最终 Markdown 内容");
+      console.log(finalMarkdown);
       console.groupEnd();
 
       console.groupEnd();
 
       // 提示用户
       alert(
-        `第一阶段完成！\n\n已准备发布文章：${title}\n包含 ${imageFileMap.size} 张图片\n\n详细信息请查看浏览器控制台。\n\n第二阶段将实现图片上传到 R2。`,
+        `第二阶段完成！\n\n文章：${title}\n图片已上传：${imageFileMap.size} 张\n\n详细信息请查看浏览器控制台。\n\n第三阶段将实现发布到 GitHub。`,
       );
+    } catch (error) {
+      console.error("发布失败:", error);
+      alert(`发布失败：${error instanceof Error ? error.message : "未知错误"}`);
     } finally {
       setIsPublishing(false);
     }
@@ -135,13 +197,13 @@ export function EditorPageClient({ session }: EditorPageClientProps) {
         </div>
 
         {/* 提示信息 */}
-        <div className="rounded-lg border border-blue-200 bg-blue-50 p-4 text-sm dark:border-blue-900 dark:bg-blue-950">
-          <h3 className="font-medium mb-2">第一阶段功能</h3>
+        <div className="rounded-lg border border-green-200 bg-green-50 p-4 text-sm dark:border-green-900 dark:bg-green-950">
+          <h3 className="font-medium mb-2">第二阶段功能</h3>
           <ul className="space-y-1 text-muted-foreground list-disc list-inside">
             <li>支持 Markdown 编辑和实时预览</li>
             <li>支持粘贴和拖拽图片（图片以 blob URL 存储）</li>
-            <li>点击"发布文章"查看控制台输出</li>
-            <li>第二阶段将实现图片上传到 Cloudflare R2</li>
+            <li>点击"发布文章"自动上传图片到 Cloudflare R2</li>
+            <li>自动替换 Markdown 中的 blob URL 为公开 URL</li>
             <li>第三阶段将实现发布到 GitHub</li>
           </ul>
         </div>
