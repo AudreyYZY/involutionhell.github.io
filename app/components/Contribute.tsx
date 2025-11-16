@@ -12,18 +12,18 @@ import {
   DialogTrigger,
 } from "@/components/ui/dialog";
 import { Input } from "@/components/ui/input";
-import { ExternalLink, Plus, Sparkles } from "lucide-react";
+import { ExternalLink, Sparkles } from "lucide-react";
 import styles from "./Contribute.module.css";
 
 // --- antd
 import { TreeSelect } from "antd";
-import type { DefaultOptionType } from "antd/es/select";
 import { DataNode } from "antd/es/tree";
 import { buildDocsNewUrl } from "@/lib/github";
-
-type DirNode = { name: string; path: string; children?: DirNode[] };
-
-const FILENAME_PATTERN = /^[A-Za-z0-9][A-Za-z0-9_-]+$/;
+import { type DirNode, FILENAME_PATTERN } from "@/lib/submission";
+import {
+  CREATE_SUBDIR_SUFFIX,
+  toTreeSelectData,
+} from "@/app/components/contribute/tree-utils";
 
 // 统一调用工具函数生成 GitHub 新建链接，路径规则与 Edit 按钮一致
 function buildGithubNewUrl(dirPath: string, filename: string, title: string) {
@@ -42,34 +42,6 @@ Write your content here.
 `;
   const params = new URLSearchParams({ filename: file, value: frontMatter });
   return buildDocsNewUrl(dirPath, params);
-}
-
-// ✅ 用纯文本 label + 一级节点 selectable:false
-function toTreeSelectData(tree: DirNode[]): DefaultOptionType[] {
-  return tree.map((l1) => ({
-    key: l1.path,
-    value: l1.path,
-    label: l1.name,
-    selectable: false, // ✅ 一级不可选
-    children: [
-      ...(l1.children || []).map((l2) => ({
-        key: l2.path,
-        value: l2.path,
-        label: `${l1.name} / ${l2.name}`, // 纯文本，方便搜索
-        isLeaf: true,
-      })),
-      {
-        key: `${l1.path}/__create__`,
-        value: `${l1.path}/__create__`,
-        label: (
-          <span className="inline-flex items-center">
-            <Plus className="mr-1 h-3.5 w-3.5" />
-            在「{l1.name}」下新建二级子栏目…
-          </span>
-        ),
-      },
-    ],
-  }));
 }
 
 export function Contribute() {
@@ -127,7 +99,7 @@ export function Contribute() {
 
   const finalDirPath = useMemo(() => {
     if (!selectedKey) return "";
-    if (selectedKey.endsWith("/__create__")) {
+    if (selectedKey.endsWith(CREATE_SUBDIR_SUFFIX)) {
       const l1 = selectedKey.split("/")[0];
       if (!newSub.trim()) return "";
       return `${l1}/${newSub.trim().replace(/\s+/g, "-")}`;
@@ -276,7 +248,7 @@ export function Contribute() {
           />
         </div>
 
-        {selectedKey.endsWith("/__create__") && (
+        {selectedKey.endsWith(CREATE_SUBDIR_SUFFIX) && (
           <div className="space-y-1">
             <label className="text-sm font-medium">新建二级子栏目名称</label>
             <Input
