@@ -27,6 +27,8 @@
     "@assistant-ui/react-ai-sdk": "^1.1.0",
     "@assistant-ui/react-markdown": "^0.11.0",
     "@auth/neon-adapter": "^1.10.0",
+    "@aws-sdk/client-s3": "^3.932.0",
+    "@aws-sdk/s3-request-presigner": "^3.932.0",
     "@giscus/react": "^3.1.0",
     "@milkdown/crepe": "^7.17.1",
     "@neondatabase/serverless": "^1.0.1",
