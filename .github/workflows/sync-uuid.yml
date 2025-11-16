@@ -22,7 +22,7 @@ concurrency:
 jobs:
   backfill:
     # 防止 fork、限定 main、并避免机器人循环
-    if: github.repository == 'InvolutionHell/involutionhell.github.io' &&
+    if:
       (github.ref == 'refs/heads/main' || github.ref == 'refs/heads/feat/contributor') &&
       github.actor != 'github-actions[bot]'
     runs-on: ubuntu-latest

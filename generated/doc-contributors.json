@@ -1,8 +1,8 @@
 {
-  "repo": "InvolutionHell/involutionhell.github.io",
-  "generatedAt": "2025-10-26T19:17:15.844Z",
+  "repo": "InvolutionHell/involutionhell",
+  "generatedAt": "2025-11-16T10:52:51.362Z",
   "docsDir": "app/docs",
-  "totalDocs": 104,
+  "totalDocs": 115,
   "results": [
     {
       "docId": "ue27z7z95yzw3lhhfj7nit1c",
@@ -53,6 +53,23 @@
           "login": "longsizhuo",
           "avatarUrl": "https://avatars.githubusercontent.com/u/114939201?v=4",
           "htmlUrl": "https://github.com/longsizhuo"
+        }
+      ]
+    },
+    {
+      "docId": "vesefhhnj2ebu2oafxa3qmcg",
+      "path": "app/docs/ai/agents-todo/testmd.md",
+      "contributorStats": {
+        "7187663": 1
+      },
+      "contributors": [
+        {
+          "githubId": "7187663",
+          "contributions": 1,
+          "lastContributedAt": "2025-11-16T10:48:15.000Z",
+          "login": "Crokily",
+          "avatarUrl": "https://avatars.githubusercontent.com/u/7187663?v=4",
+          "htmlUrl": "https://github.com/Crokily"
         }
       ]
     },
@@ -1604,6 +1621,7 @@
       "docId": "ifwz8sqxqsgjrafa79pycrcm",
       "path": "app/docs/all-projects/multimodal-rl.mdx",
       "contributorStats": {
+        "114939201": 1,
         "150361711": 1,
         "163523387": 3
       },
@@ -1615,6 +1633,14 @@
           "login": "Mira190",
           "avatarUrl": "https://avatars.githubusercontent.com/u/163523387?v=4",
           "htmlUrl": "https://github.com/Mira190"
+        },
+        {
+          "githubId": "114939201",
+          "contributions": 1,
+          "lastContributedAt": "2025-10-27T18:01:38.000Z",
+          "login": "longsizhuo",
+          "avatarUrl": "https://avatars.githubusercontent.com/u/114939201?v=4",
+          "htmlUrl": "https://github.com/longsizhuo"
         },
         {
           "githubId": "150361711",
@@ -2002,6 +2028,159 @@
           "githubId": "114939201",
           "contributions": 1,
           "lastContributedAt": "2025-09-26T19:56:04.000Z",
+          "login": "longsizhuo",
+          "avatarUrl": "https://avatars.githubusercontent.com/u/114939201?v=4",
+          "htmlUrl": "https://github.com/longsizhuo"
+        }
+      ]
+    },
+    {
+      "docId": "rv6egbynttb4mt1n0412bue0",
+      "path": "app/docs/CommunityShare/Leetcode/[213]打家劫舍 II_translated.md",
+      "contributorStats": {
+        "114939201": 2
+      },
+      "contributors": [
+        {
+          "githubId": "114939201",
+          "contributions": 2,
+          "lastContributedAt": "2025-11-14T03:05:55.000Z",
+          "login": "longsizhuo",
+          "avatarUrl": "https://avatars.githubusercontent.com/u/114939201?v=4",
+          "htmlUrl": "https://github.com/longsizhuo"
+        }
+      ]
+    },
+    {
+      "docId": "ytg2bds2dnhzw37nrb3vassy",
+      "path": "app/docs/CommunityShare/Leetcode/1004_translated.md",
+      "contributorStats": {
+        "114939201": 2
+      },
+      "contributors": [
+        {
+          "githubId": "114939201",
+          "contributions": 2,
+          "lastContributedAt": "2025-11-16T03:05:57.000Z",
+          "login": "longsizhuo",
+          "avatarUrl": "https://avatars.githubusercontent.com/u/114939201?v=4",
+          "htmlUrl": "https://github.com/longsizhuo"
+        }
+      ]
+    },
+    {
+      "docId": "p8igr19xfxnuyo2lpngnr6fg",
+      "path": "app/docs/CommunityShare/Leetcode/1234. 替换子串得到平衡字符串_translated.md",
+      "contributorStats": {
+        "114939201": 4
+      },
+      "contributors": [
+        {
+          "githubId": "114939201",
+          "contributions": 4,
+          "lastContributedAt": "2025-11-09T13:41:11.000Z",
+          "login": "longsizhuo",
+          "avatarUrl": "https://avatars.githubusercontent.com/u/114939201?v=4",
+          "htmlUrl": "https://github.com/longsizhuo"
+        }
+      ]
+    },
+    {
+      "docId": "bsf0yz1zrmlz7masrdmq8fq6",
+      "path": "app/docs/CommunityShare/Leetcode/1653. 使字符串平衡的最少删除次数_translated.md",
+      "contributorStats": {
+        "114939201": 2
+      },
+      "contributors": [
+        {
+          "githubId": "114939201",
+          "contributions": 2,
+          "lastContributedAt": "2025-11-12T03:05:32.000Z",
+          "login": "longsizhuo",
+          "avatarUrl": "https://avatars.githubusercontent.com/u/114939201?v=4",
+          "htmlUrl": "https://github.com/longsizhuo"
+        }
+      ]
+    },
+    {
+      "docId": "a6inw303oslb7i5tcqj5xxx4",
+      "path": "app/docs/CommunityShare/Leetcode/2270. Number of Ways to Split Array.md",
+      "contributorStats": {
+        "114939201": 2
+      },
+      "contributors": [
+        {
+          "githubId": "114939201",
+          "contributions": 2,
+          "lastContributedAt": "2025-11-13T03:06:21.000Z",
+          "login": "longsizhuo",
+          "avatarUrl": "https://avatars.githubusercontent.com/u/114939201?v=4",
+          "htmlUrl": "https://github.com/longsizhuo"
+        }
+      ]
+    },
+    {
+      "docId": "clx9mmqqvxipdfamqciuo146",
+      "path": "app/docs/CommunityShare/Leetcode/2679.矩阵中的和_translated.md",
+      "contributorStats": {
+        "114939201": 2
+      },
+      "contributors": [
+        {
+          "githubId": "114939201",
+          "contributions": 2,
+          "lastContributedAt": "2025-11-09T14:18:38.000Z",
+          "login": "longsizhuo",
+          "avatarUrl": "https://avatars.githubusercontent.com/u/114939201?v=4",
+          "htmlUrl": "https://github.com/longsizhuo"
+        }
+      ]
+    },
+    {
+      "docId": "ryp6s59uwc10w2dywgs6f66h",
+      "path": "app/docs/CommunityShare/Leetcode/80_translated.md",
+      "contributorStats": {
+        "114939201": 2
+      },
+      "contributors": [
+        {
+          "githubId": "114939201",
+          "contributions": 2,
+          "lastContributedAt": "2025-11-11T03:04:31.000Z",
+          "login": "longsizhuo",
+          "avatarUrl": "https://avatars.githubusercontent.com/u/114939201?v=4",
+          "htmlUrl": "https://github.com/longsizhuo"
+        }
+      ]
+    },
+    {
+      "docId": "fostlzqqx6l10qz1egd8dw5m",
+      "path": "app/docs/CommunityShare/Leetcode/Counting Stars-Inter-Uni Programming Contest.md",
+      "contributorStats": {
+        "114939201": 2
+      },
+      "contributors": [
+        {
+          "githubId": "114939201",
+          "contributions": 2,
+          "lastContributedAt": "2025-11-15T03:07:06.000Z",
+          "login": "longsizhuo",
+          "avatarUrl": "https://avatars.githubusercontent.com/u/114939201?v=4",
+          "htmlUrl": "https://github.com/longsizhuo"
+        }
+      ]
+    },
+    {
+      "docId": "qfvqmc1exp066falnsg97c5m",
+      "path": "app/docs/CommunityShare/Leetcode/剑指 Offer II 021. 删除链表的倒数第 n 个结点_translated.md",
+      "contributorStats": {
+        "114939201": 2
+      },
+      "contributors": [
+        {
+          "githubId": "114939201",
+          "contributions": 2,
+          "lastContributedAt": "2025-11-10T03:06:23.000Z",
           "login": "longsizhuo",
           "avatarUrl": "https://avatars.githubusercontent.com/u/114939201?v=4",
           "htmlUrl": "https://github.com/longsizhuo"
@@ -2705,6 +2884,32 @@
       ]
     },
     {
+      "docId": "ld59a8z1v84ig4rlr0p0n2a9",
+      "path": "app/docs/jobs/event-keynote/coffee-chat.md",
+      "contributorStats": {
+        "114939201": 1,
+        "163523387": 2
+      },
+      "contributors": [
+        {
+          "githubId": "163523387",
+          "contributions": 2,
+          "lastContributedAt": "2025-11-01T10:30:20.000Z",
+          "login": "Mira190",
+          "avatarUrl": "https://avatars.githubusercontent.com/u/163523387?v=4",
+          "htmlUrl": "https://github.com/Mira190"
+        },
+        {
+          "githubId": "114939201",
+          "contributions": 1,
+          "lastContributedAt": "2025-11-09T12:26:56.000Z",
+          "login": "longsizhuo",
+          "avatarUrl": "https://avatars.githubusercontent.com/u/114939201?v=4",
+          "htmlUrl": "https://github.com/longsizhuo"
+        }
+      ]
+    },
+    {
       "docId": "s8w3d2p5k9m4h7z1x0c2a8r6",
       "path": "app/docs/jobs/event-keynote/event-takeway.md",
       "contributorStats": {
@@ -2804,13 +3009,13 @@
       "path": "app/docs/jobs/interview-prep/preparations-to-get-an-offer-as-a-student.mdx",
       "contributorStats": {
         "90535573": 1,
-        "114939201": 1
+        "114939201": 2
       },
       "contributors": [
         {
           "githubId": "114939201",
-          "contributions": 1,
-          "lastContributedAt": "2025-10-08T08:46:02.000Z",
+          "contributions": 2,
+          "lastContributedAt": "2025-10-27T18:01:38.000Z",
           "login": "longsizhuo",
           "avatarUrl": "https://avatars.githubusercontent.com/u/114939201?v=4",
           "htmlUrl": "https://github.com/longsizhuo"
