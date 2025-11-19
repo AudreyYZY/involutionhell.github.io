@@ -1,8 +1,8 @@
 {
   "repo": "InvolutionHell/involutionhell",
-  "generatedAt": "2025-11-18T03:06:32.801Z",
+  "generatedAt": "2025-11-19T03:06:17.842Z",
   "docsDir": "app/docs",
-  "totalDocs": 117,
+  "totalDocs": 118,
   "results": [
     {
       "docId": "ue27z7z95yzw3lhhfj7nit1c",
@@ -2052,6 +2052,23 @@
       ]
     },
     {
+      "docId": "jcqhknk5z2xr3rfqn49me4j9",
+      "path": "app/docs/CommunityShare/Leetcode/[1333]餐厅过滤器_translated.md",
+      "contributorStats": {
+        "114939201": 1
+      },
+      "contributors": [
+        {
+          "githubId": "114939201",
+          "contributions": 1,
+          "lastContributedAt": "2025-11-19T03:00:06.000Z",
+          "login": "longsizhuo",
+          "avatarUrl": "https://avatars.githubusercontent.com/u/114939201?v=4",
+          "htmlUrl": "https://github.com/longsizhuo"
+        }
+      ]
+    },
+    {
       "docId": "rv6egbynttb4mt1n0412bue0",
       "path": "app/docs/CommunityShare/Leetcode/[213]打家劫舍 II_translated.md",
       "contributorStats": {
@@ -2157,13 +2174,13 @@
       "docId": "udm0daiek9dr22xq4doep5w4",
       "path": "app/docs/CommunityShare/Leetcode/345. 反转字符串中的元音字母_translated.md",
       "contributorStats": {
-        "114939201": 1
+        "114939201": 2
       },
       "contributors": [
         {
           "githubId": "114939201",
-          "contributions": 1,
-          "lastContributedAt": "2025-11-18T03:00:08.000Z",
+          "contributions": 2,
+          "lastContributedAt": "2025-11-18T03:06:33.000Z",
           "login": "longsizhuo",
           "avatarUrl": "https://avatars.githubusercontent.com/u/114939201?v=4",
           "htmlUrl": "https://github.com/longsizhuo"
