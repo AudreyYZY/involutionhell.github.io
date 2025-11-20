@@ -1,11 +1,13 @@
 ---
 title: brief_alternate Assignment
-date: '2024.01.01 0:00'
+date: "2024.01.01 0:00"
 tags:
   - - Python
   - - pandas
 abbrlink: dbbd7d58
+docId: one7va4e0hvbq1eqhm6ww2kd
 ---
+
 # topic
 
 [brief_alternate.pdf](..%2Fassets%2Fdocuments%2Fbrief_alternate.pdf)
@@ -28,10 +30,11 @@ What the knowledge point needs to be remembered is：
    grammar： `df.loc[row_indexer, column_indexer]`
    in，row_indexer Is the label to choose a line，column_indexer Is the label of the column to be selected。
 4. unique()Return without duplicationvalueofnumbercount。
-code show as below：
+   code show as below：
 
 [superstore](..%2Fassets%2Fdocuments%2Fsuperstore)
-```python  s_p
+
+```python s_p
 # Import pandas library as pd
 import pandas as pd
 
@@ -83,7 +86,7 @@ with open("summary_report.txt", "a") as file:
 
 ```
 
-```python  api
+```python api
 import requests
 
 url = ""
@@ -115,7 +118,8 @@ f.close()
 print("over")
 
 ```
-```python  customers
+
+```python customers
 import pandas as pd
 
 df = pd.read_csv("superstore_transaction.csv")

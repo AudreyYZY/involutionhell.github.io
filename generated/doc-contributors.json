@@ -1,8 +1,8 @@
 {
   "repo": "InvolutionHell/involutionhell",
-  "generatedAt": "2025-11-19T03:06:17.842Z",
+  "generatedAt": "2025-11-20T03:05:03.577Z",
   "docsDir": "app/docs",
-  "totalDocs": 118,
+  "totalDocs": 119,
   "results": [
     {
       "docId": "ue27z7z95yzw3lhhfj7nit1c",
@@ -2055,13 +2055,13 @@
       "docId": "jcqhknk5z2xr3rfqn49me4j9",
       "path": "app/docs/CommunityShare/Leetcode/[1333]餐厅过滤器_translated.md",
       "contributorStats": {
-        "114939201": 1
+        "114939201": 2
       },
       "contributors": [
         {
           "githubId": "114939201",
-          "contributions": 1,
-          "lastContributedAt": "2025-11-19T03:00:06.000Z",
+          "contributions": 2,
+          "lastContributedAt": "2025-11-19T03:06:18.000Z",
           "login": "longsizhuo",
           "avatarUrl": "https://avatars.githubusercontent.com/u/114939201?v=4",
           "htmlUrl": "https://github.com/longsizhuo"
@@ -2198,6 +2198,23 @@
           "githubId": "114939201",
           "contributions": 2,
           "lastContributedAt": "2025-11-11T03:04:31.000Z",
+          "login": "longsizhuo",
+          "avatarUrl": "https://avatars.githubusercontent.com/u/114939201?v=4",
+          "htmlUrl": "https://github.com/longsizhuo"
+        }
+      ]
+    },
+    {
+      "docId": "one7va4e0hvbq1eqhm6ww2kd",
+      "path": "app/docs/CommunityShare/Leetcode/brief_alternate 作业帮忙_translated.md",
+      "contributorStats": {
+        "114939201": 1
+      },
+      "contributors": [
+        {
+          "githubId": "114939201",
+          "contributions": 1,
+          "lastContributedAt": "2025-11-20T03:00:04.000Z",
           "login": "longsizhuo",
           "avatarUrl": "https://avatars.githubusercontent.com/u/114939201?v=4",
           "htmlUrl": "https://github.com/longsizhuo"
