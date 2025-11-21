@@ -1,8 +1,8 @@
 {
   "repo": "InvolutionHell/involutionhell",
-  "generatedAt": "2025-11-21T03:05:06.818Z",
+  "generatedAt": "2025-11-21T03:26:40.870Z",
   "docsDir": "app/docs",
-  "totalDocs": 120,
+  "totalDocs": 119,
   "results": [
     {
       "docId": "ue27z7z95yzw3lhhfj7nit1c",
@@ -53,23 +53,6 @@
           "login": "longsizhuo",
           "avatarUrl": "https://avatars.githubusercontent.com/u/114939201?v=4",
           "htmlUrl": "https://github.com/longsizhuo"
-        }
-      ]
-    },
-    {
-      "docId": "vesefhhnj2ebu2oafxa3qmcg",
-      "path": "app/docs/ai/agents-todo/testmd.md",
-      "contributorStats": {
-        "7187663": 2
-      },
-      "contributors": [
-        {
-          "githubId": "7187663",
-          "contributions": 2,
-          "lastContributedAt": "2025-11-16T10:52:52.000Z",
-          "login": "Crokily",
-          "avatarUrl": "https://avatars.githubusercontent.com/u/7187663?v=4",
-          "htmlUrl": "https://github.com/Crokily"
         }
       ]
     },
@@ -2157,13 +2140,13 @@
       "docId": "fxn6bn619g3a9l98l9vggpg1",
       "path": "app/docs/CommunityShare/Leetcode/2299强密码检验器II_translated.md",
       "contributorStats": {
-        "114939201": 1
+        "114939201": 2
       },
       "contributors": [
         {
           "githubId": "114939201",
-          "contributions": 1,
-          "lastContributedAt": "2025-11-21T03:00:16.000Z",
+          "contributions": 2,
+          "lastContributedAt": "2025-11-21T03:05:08.000Z",
           "login": "longsizhuo",
           "avatarUrl": "https://avatars.githubusercontent.com/u/114939201?v=4",
           "htmlUrl": "https://github.com/longsizhuo"
