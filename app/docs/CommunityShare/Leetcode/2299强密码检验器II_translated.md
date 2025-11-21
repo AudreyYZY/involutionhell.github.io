@@ -1,14 +1,13 @@
 ---
 title: One question daily 2299. Code inspection device II
-date: '2024.01.01 0:00'
+date: "2024.01.01 0:00"
 tags:
   - - Python
   - - answer
   - - Bit operation
 abbrlink: 7ded25bb
+docId: fxn6bn619g3a9l98l9vggpg1
 ---
-
-
 
 Excess when executing100%User，What can I say about this question，But one**Bit operation**Knowledge point
 
@@ -35,7 +34,9 @@ class Solution:
             return True
         return False
 ```
+
 # Bit operation代码：
+
 method one：simulation + Bit operation
 
 According to the description of the topic，我们可以simulation检查密码是否满足题目要求的过程。
@@ -43,6 +44,7 @@ According to the description of the topic，我们可以simulation检查密码�
 first，We check whether the length of the password is less than 8，in the case of，Then return false。
 
 Next，We use a mask mask To record whether the password contains a lowercase letter、uppercase letter、Numbers and special characters。We traverse the password，Like a character every time，First determine whether it is the same as the previous character，in the case of，Then return false。Then，Update mask according to the type of character mask。at last，We check the mask mask Whether it is 15，in the case of，Then return true，否Then return false。
+
 ```python
 class Solution:
     def strongPasswordCheckerII(self, password: str) -> bool:
