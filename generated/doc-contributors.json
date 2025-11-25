@@ -1,8 +1,8 @@
 {
   "repo": "InvolutionHell/involutionhell",
-  "generatedAt": "2025-11-24T03:05:25.591Z",
+  "generatedAt": "2025-11-25T03:06:12.634Z",
   "docsDir": "app/docs",
-  "totalDocs": 122,
+  "totalDocs": 123,
   "results": [
     {
       "docId": "ue27z7z95yzw3lhhfj7nit1c",
@@ -2222,6 +2222,23 @@
       ]
     },
     {
+      "docId": "mxt0ux1zpbzph4nuxz51eyg7",
+      "path": "app/docs/CommunityShare/Leetcode/46.全排列.md",
+      "contributorStats": {
+        "114939201": 1
+      },
+      "contributors": [
+        {
+          "githubId": "114939201",
+          "contributions": 1,
+          "lastContributedAt": "2025-11-25T03:00:08.000Z",
+          "login": "longsizhuo",
+          "avatarUrl": "https://avatars.githubusercontent.com/u/114939201?v=4",
+          "htmlUrl": "https://github.com/longsizhuo"
+        }
+      ]
+    },
+    {
       "docId": "ryp6s59uwc10w2dywgs6f66h",
       "path": "app/docs/CommunityShare/Leetcode/80_translated.md",
       "contributorStats": {
@@ -2242,13 +2259,13 @@
       "docId": "d5evrnoglwjvmyginjq84bl0",
       "path": "app/docs/CommunityShare/Leetcode/93复原Ip地址.md",
       "contributorStats": {
-        "114939201": 1
+        "114939201": 2
       },
       "contributors": [
         {
           "githubId": "114939201",
-          "contributions": 1,
-          "lastContributedAt": "2025-11-24T03:00:36.000Z",
+          "contributions": 2,
+          "lastContributedAt": "2025-11-24T03:05:26.000Z",
           "login": "longsizhuo",
           "avatarUrl": "https://avatars.githubusercontent.com/u/114939201?v=4",
           "htmlUrl": "https://github.com/longsizhuo"
