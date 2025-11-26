@@ -1,8 +1,8 @@
 {
   "repo": "InvolutionHell/involutionhell",
-  "generatedAt": "2025-11-25T03:06:12.634Z",
+  "generatedAt": "2025-11-26T03:06:32.553Z",
   "docsDir": "app/docs",
-  "totalDocs": 123,
+  "totalDocs": 124,
   "results": [
     {
       "docId": "ue27z7z95yzw3lhhfj7nit1c",
@@ -2120,6 +2120,23 @@
       ]
     },
     {
+      "docId": "chb8ee5s38v8gh751n9e5znj",
+      "path": "app/docs/CommunityShare/Leetcode/1828统计一个圆中点的数目_translated.md",
+      "contributorStats": {
+        "114939201": 1
+      },
+      "contributors": [
+        {
+          "githubId": "114939201",
+          "contributions": 1,
+          "lastContributedAt": "2025-11-26T03:00:05.000Z",
+          "login": "longsizhuo",
+          "avatarUrl": "https://avatars.githubusercontent.com/u/114939201?v=4",
+          "htmlUrl": "https://github.com/longsizhuo"
+        }
+      ]
+    },
+    {
       "docId": "lzrh7ftq3kegsyx8gimonrfu",
       "path": "app/docs/CommunityShare/Leetcode/2241. Design an ATM Machine.md",
       "contributorStats": {
@@ -2225,13 +2242,13 @@
       "docId": "mxt0ux1zpbzph4nuxz51eyg7",
       "path": "app/docs/CommunityShare/Leetcode/46.全排列.md",
       "contributorStats": {
-        "114939201": 1
+        "114939201": 2
       },
       "contributors": [
         {
           "githubId": "114939201",
-          "contributions": 1,
-          "lastContributedAt": "2025-11-25T03:00:08.000Z",
+          "contributions": 2,
+          "lastContributedAt": "2025-11-25T03:06:13.000Z",
           "login": "longsizhuo",
           "avatarUrl": "https://avatars.githubusercontent.com/u/114939201?v=4",
           "htmlUrl": "https://github.com/longsizhuo"

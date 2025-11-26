@@ -1,14 +1,15 @@
 ---
 title: 1828. Statistics the number of a circle mid -point One question daily
-date: '2024.01.01 0:00'
+date: "2024.01.01 0:00"
 tags:
   - - Python
   - - answer
   - - math
 abbrlink: 3277549c
+docId: chb8ee5s38v8gh751n9e5znj
 ---
-# topic：
 
+# topic：
 
 [1828. Statistics the number of a circle mid -point](https://leetcode.cn/problems/queries-on-number-of-points-inside-a-circle/description/)
 
@@ -43,7 +44,6 @@ class Solution:
 
 Take a look at someone who can't understandpythonCode：
 
-
 ```python
 class Solution:
     def countPoints(self, points: List[List[int]], queries: List[List[int]]) -> List[int]:
@@ -58,9 +58,9 @@ class Solution:
             idx2 = bisect_right(points, [right, inf])
 
             for x, y in points[idx1: idx2 + 1]:
-                if (v - r <= y <= v + r and 
+                if (v - r <= y <= v + r and
                     (x - u) * (x - u) + (y - v) * (y - v) <= r * r):
-  
+
                     res[i] += 1
 
         return res
