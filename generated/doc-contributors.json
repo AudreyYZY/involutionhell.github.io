@@ -1,8 +1,8 @@
 {
   "repo": "InvolutionHell/involutionhell",
-  "generatedAt": "2025-11-26T03:06:32.553Z",
+  "generatedAt": "2025-11-27T03:05:27.753Z",
   "docsDir": "app/docs",
-  "totalDocs": 124,
+  "totalDocs": 125,
   "results": [
     {
       "docId": "ue27z7z95yzw3lhhfj7nit1c",
@@ -2123,13 +2123,13 @@
       "docId": "chb8ee5s38v8gh751n9e5znj",
       "path": "app/docs/CommunityShare/Leetcode/1828统计一个圆中点的数目_translated.md",
       "contributorStats": {
-        "114939201": 1
+        "114939201": 2
       },
       "contributors": [
         {
           "githubId": "114939201",
-          "contributions": 1,
-          "lastContributedAt": "2025-11-26T03:00:05.000Z",
+          "contributions": 2,
+          "lastContributedAt": "2025-11-26T03:06:33.000Z",
           "login": "longsizhuo",
           "avatarUrl": "https://avatars.githubusercontent.com/u/114939201?v=4",
           "htmlUrl": "https://github.com/longsizhuo"
@@ -2266,6 +2266,23 @@
           "githubId": "114939201",
           "contributions": 2,
           "lastContributedAt": "2025-11-11T03:04:31.000Z",
+          "login": "longsizhuo",
+          "avatarUrl": "https://avatars.githubusercontent.com/u/114939201?v=4",
+          "htmlUrl": "https://github.com/longsizhuo"
+        }
+      ]
+    },
+    {
+      "docId": "s0cadbu09dgu54q0zxttkx7z",
+      "path": "app/docs/CommunityShare/Leetcode/9021_TUT_3_25T1.md",
+      "contributorStats": {
+        "114939201": 1
+      },
+      "contributors": [
+        {
+          "githubId": "114939201",
+          "contributions": 1,
+          "lastContributedAt": "2025-11-27T03:00:16.000Z",
           "login": "longsizhuo",
           "avatarUrl": "https://avatars.githubusercontent.com/u/114939201?v=4",
           "htmlUrl": "https://github.com/longsizhuo"
