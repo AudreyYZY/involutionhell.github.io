@@ -1,8 +1,8 @@
 {
   "repo": "InvolutionHell/involutionhell",
-  "generatedAt": "2025-11-27T03:05:27.753Z",
+  "generatedAt": "2025-11-28T03:06:17.491Z",
   "docsDir": "app/docs",
-  "totalDocs": 125,
+  "totalDocs": 126,
   "results": [
     {
       "docId": "ue27z7z95yzw3lhhfj7nit1c",
@@ -2205,6 +2205,23 @@
       ]
     },
     {
+      "docId": "mc2rjsq7syibclikyhomsbft",
+      "path": "app/docs/CommunityShare/Leetcode/2309兼具大小写的最好英文字母_translated.md",
+      "contributorStats": {
+        "114939201": 1
+      },
+      "contributors": [
+        {
+          "githubId": "114939201",
+          "contributions": 1,
+          "lastContributedAt": "2025-11-28T03:00:11.000Z",
+          "login": "longsizhuo",
+          "avatarUrl": "https://avatars.githubusercontent.com/u/114939201?v=4",
+          "htmlUrl": "https://github.com/longsizhuo"
+        }
+      ]
+    },
+    {
       "docId": "clx9mmqqvxipdfamqciuo146",
       "path": "app/docs/CommunityShare/Leetcode/2679.矩阵中的和_translated.md",
       "contributorStats": {
@@ -2276,13 +2293,13 @@
       "docId": "s0cadbu09dgu54q0zxttkx7z",
       "path": "app/docs/CommunityShare/Leetcode/9021_TUT_3_25T1.md",
       "contributorStats": {
-        "114939201": 1
+        "114939201": 2
       },
       "contributors": [
         {
           "githubId": "114939201",
-          "contributions": 1,
-          "lastContributedAt": "2025-11-27T03:00:16.000Z",
+          "contributions": 2,
+          "lastContributedAt": "2025-11-27T03:05:29.000Z",
           "login": "longsizhuo",
           "avatarUrl": "https://avatars.githubusercontent.com/u/114939201?v=4",
           "htmlUrl": "https://github.com/longsizhuo"
