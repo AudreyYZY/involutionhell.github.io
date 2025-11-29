@@ -1,8 +1,8 @@
 {
   "repo": "InvolutionHell/involutionhell",
-  "generatedAt": "2025-11-28T03:06:17.491Z",
+  "generatedAt": "2025-11-29T03:05:48.113Z",
   "docsDir": "app/docs",
-  "totalDocs": 126,
+  "totalDocs": 127,
   "results": [
     {
       "docId": "ue27z7z95yzw3lhhfj7nit1c",
@@ -2208,13 +2208,30 @@
       "docId": "mc2rjsq7syibclikyhomsbft",
       "path": "app/docs/CommunityShare/Leetcode/2309兼具大小写的最好英文字母_translated.md",
       "contributorStats": {
+        "114939201": 2
+      },
+      "contributors": [
+        {
+          "githubId": "114939201",
+          "contributions": 2,
+          "lastContributedAt": "2025-11-28T03:06:18.000Z",
+          "login": "longsizhuo",
+          "avatarUrl": "https://avatars.githubusercontent.com/u/114939201?v=4",
+          "htmlUrl": "https://github.com/longsizhuo"
+        }
+      ]
+    },
+    {
+      "docId": "hiqhki2z4v6oy0jstrcs7im0",
+      "path": "app/docs/CommunityShare/Leetcode/2335. 装满杯子需要的最短总时长_translated.md",
+      "contributorStats": {
         "114939201": 1
       },
       "contributors": [
         {
           "githubId": "114939201",
           "contributions": 1,
-          "lastContributedAt": "2025-11-28T03:00:11.000Z",
+          "lastContributedAt": "2025-11-29T03:00:32.000Z",
           "login": "longsizhuo",
           "avatarUrl": "https://avatars.githubusercontent.com/u/114939201?v=4",
           "htmlUrl": "https://github.com/longsizhuo"
