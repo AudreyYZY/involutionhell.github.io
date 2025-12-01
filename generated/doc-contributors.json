@@ -1,8 +1,8 @@
 {
   "repo": "InvolutionHell/involutionhell",
-  "generatedAt": "2025-11-30T03:06:24.054Z",
+  "generatedAt": "2025-12-01T03:07:26.387Z",
   "docsDir": "app/docs",
-  "totalDocs": 128,
+  "totalDocs": 129,
   "results": [
     {
       "docId": "ue27z7z95yzw3lhhfj7nit1c",
@@ -2137,6 +2137,23 @@
       ]
     },
     {
+      "docId": "ksw2vic4alf1tdnnueay81g8",
+      "path": "app/docs/CommunityShare/Leetcode/2131. 连接两字母单词得到的最长回文串.md",
+      "contributorStats": {
+        "114939201": 1
+      },
+      "contributors": [
+        {
+          "githubId": "114939201",
+          "contributions": 1,
+          "lastContributedAt": "2025-12-01T03:00:37.000Z",
+          "login": "longsizhuo",
+          "avatarUrl": "https://avatars.githubusercontent.com/u/114939201?v=4",
+          "htmlUrl": "https://github.com/longsizhuo"
+        }
+      ]
+    },
+    {
       "docId": "lzrh7ftq3kegsyx8gimonrfu",
       "path": "app/docs/CommunityShare/Leetcode/2241. Design an ATM Machine.md",
       "contributorStats": {
@@ -2293,13 +2310,13 @@
       "docId": "wen0bbo8m93oih1mx6sva9sh",
       "path": "app/docs/CommunityShare/Leetcode/538.把二叉搜索树转换为累加树_translated.md",
       "contributorStats": {
-        "114939201": 1
+        "114939201": 2
       },
       "contributors": [
         {
           "githubId": "114939201",
-          "contributions": 1,
-          "lastContributedAt": "2025-11-30T03:00:04.000Z",
+          "contributions": 2,
+          "lastContributedAt": "2025-11-30T03:06:25.000Z",
           "login": "longsizhuo",
           "avatarUrl": "https://avatars.githubusercontent.com/u/114939201?v=4",
           "htmlUrl": "https://github.com/longsizhuo"
