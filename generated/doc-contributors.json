@@ -1,8 +1,8 @@
 {
   "repo": "InvolutionHell/involutionhell",
-  "generatedAt": "2025-12-02T03:05:18.981Z",
+  "generatedAt": "2025-12-03T03:07:03.245Z",
   "docsDir": "app/docs",
-  "totalDocs": 130,
+  "totalDocs": 131,
   "results": [
     {
       "docId": "ue27z7z95yzw3lhhfj7nit1c",
@@ -2069,6 +2069,23 @@
       ]
     },
     {
+      "docId": "p9gvb8klqv990cq88j4l76zy",
+      "path": "app/docs/CommunityShare/Leetcode/[2582]递枕头_translated.md",
+      "contributorStats": {
+        "114939201": 1
+      },
+      "contributors": [
+        {
+          "githubId": "114939201",
+          "contributions": 1,
+          "lastContributedAt": "2025-12-03T03:00:10.000Z",
+          "login": "longsizhuo",
+          "avatarUrl": "https://avatars.githubusercontent.com/u/114939201?v=4",
+          "htmlUrl": "https://github.com/longsizhuo"
+        }
+      ]
+    },
+    {
       "docId": "ytg2bds2dnhzw37nrb3vassy",
       "path": "app/docs/CommunityShare/Leetcode/1004_translated.md",
       "contributorStats": {
@@ -2276,13 +2293,13 @@
       "docId": "r12u8o7j73oxhbvgphi939fb",
       "path": "app/docs/CommunityShare/Leetcode/3072. 将元素分配到两个数组中 II_translated.md",
       "contributorStats": {
-        "114939201": 1
+        "114939201": 2
       },
       "contributors": [
         {
           "githubId": "114939201",
-          "contributions": 1,
-          "lastContributedAt": "2025-12-02T03:00:09.000Z",
+          "contributions": 2,
+          "lastContributedAt": "2025-12-02T03:05:20.000Z",
           "login": "longsizhuo",
           "avatarUrl": "https://avatars.githubusercontent.com/u/114939201?v=4",
           "htmlUrl": "https://github.com/longsizhuo"
