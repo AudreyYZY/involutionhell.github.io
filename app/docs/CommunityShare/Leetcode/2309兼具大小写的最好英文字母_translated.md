@@ -43,7 +43,7 @@ class Solution:
         return ""
 ```
 
-```C++ Hash table
+```cpp Hash table
 class Solution {
 public:
     string greatestLetter(string s) {
