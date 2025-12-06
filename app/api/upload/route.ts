@@ -23,18 +23,15 @@ interface UploadRequest {
 }
 
 /**
- * POST /api/upload
- * 生成 R2 预签名 URL，用于客户端直接上传图片
- *
- * 请求体：
- * - filename: 文件名
- * - contentType: 文件 MIME 类型
- * - articleSlug: 文章 slug（用于组织文件路径）
- *
- * 返回：
- * - uploadUrl: 预签名上传 URL（用于 PUT 请求）
- * - publicUrl: 图片的公开访问 URL
- * - key: R2 对象键
+ * @description POST /api/upload - 生成 R2 预签名 URL，用于客户端直接上传图片
+ * @param request - NextRequest 对象，请求体包含以下字段：
+ *   - filename: 文件名
+ *   - contentType: 文件 MIME 类型
+ *   - articleSlug: 文章 slug（用于组织文件路径）
+ * @returns NextResponse - 返回 JSON 对象：
+ *   - uploadUrl: 预签名上传 URL（用于 PUT 请求）
+ *   - publicUrl: 图片的公开访问 URL
+ *   - key: R2 对象键
  */
 export async function POST(request: NextRequest) {
   try {
