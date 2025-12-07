@@ -1,11 +1,12 @@
 ---
 title: 2490Return ring sentence
-date: '2024.01.01 0:00'
+date: "2024.01.01 0:00"
 tags:
   - - Python
   - - answer
   - - String
 abbrlink: 5c07686c
+docId: pe6o8l76945uo7aqv79ddhii
 ---
 
 # topic：

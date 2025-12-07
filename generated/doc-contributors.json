@@ -1,8 +1,8 @@
 {
   "repo": "InvolutionHell/involutionhell",
-  "generatedAt": "2025-12-03T03:07:03.245Z",
+  "generatedAt": "2025-12-07T17:03:32.209Z",
   "docsDir": "app/docs",
-  "totalDocs": 131,
+  "totalDocs": 135,
   "results": [
     {
       "docId": "ue27z7z95yzw3lhhfj7nit1c",
@@ -2069,8 +2069,8 @@
       ]
     },
     {
-      "docId": "p9gvb8klqv990cq88j4l76zy",
-      "path": "app/docs/CommunityShare/Leetcode/[2582]递枕头_translated.md",
+      "docId": "pe6o8l76945uo7aqv79ddhii",
+      "path": "app/docs/CommunityShare/Leetcode/[2490]回环句_translated.md",
       "contributorStats": {
         "114939201": 1
       },
@@ -2078,7 +2078,24 @@
         {
           "githubId": "114939201",
           "contributions": 1,
-          "lastContributedAt": "2025-12-03T03:00:10.000Z",
+          "lastContributedAt": "2025-12-05T03:00:07.000Z",
+          "login": "longsizhuo",
+          "avatarUrl": "https://avatars.githubusercontent.com/u/114939201?v=4",
+          "htmlUrl": "https://github.com/longsizhuo"
+        }
+      ]
+    },
+    {
+      "docId": "p9gvb8klqv990cq88j4l76zy",
+      "path": "app/docs/CommunityShare/Leetcode/[2582]递枕头_translated.md",
+      "contributorStats": {
+        "114939201": 2
+      },
+      "contributors": [
+        {
+          "githubId": "114939201",
+          "contributions": 2,
+          "lastContributedAt": "2025-12-03T03:07:04.000Z",
           "login": "longsizhuo",
           "avatarUrl": "https://avatars.githubusercontent.com/u/114939201?v=4",
           "htmlUrl": "https://github.com/longsizhuo"
@@ -2113,6 +2130,23 @@
           "githubId": "114939201",
           "contributions": 4,
           "lastContributedAt": "2025-11-09T13:41:11.000Z",
+          "login": "longsizhuo",
+          "avatarUrl": "https://avatars.githubusercontent.com/u/114939201?v=4",
+          "htmlUrl": "https://github.com/longsizhuo"
+        }
+      ]
+    },
+    {
+      "docId": "ylpucy1rbbnfpe3t62u8kcfq",
+      "path": "app/docs/CommunityShare/Leetcode/142.环形链表II_translated.md",
+      "contributorStats": {
+        "114939201": 2
+      },
+      "contributors": [
+        {
+          "githubId": "114939201",
+          "contributions": 2,
+          "lastContributedAt": "2025-12-06T06:53:22.000Z",
           "login": "longsizhuo",
           "avatarUrl": "https://avatars.githubusercontent.com/u/114939201?v=4",
           "htmlUrl": "https://github.com/longsizhuo"
@@ -2242,13 +2276,13 @@
       "docId": "mc2rjsq7syibclikyhomsbft",
       "path": "app/docs/CommunityShare/Leetcode/2309兼具大小写的最好英文字母_translated.md",
       "contributorStats": {
-        "114939201": 2
+        "114939201": 3
       },
       "contributors": [
         {
           "githubId": "114939201",
-          "contributions": 2,
-          "lastContributedAt": "2025-11-28T03:06:18.000Z",
+          "contributions": 3,
+          "lastContributedAt": "2025-12-05T06:03:22.000Z",
           "login": "longsizhuo",
           "avatarUrl": "https://avatars.githubusercontent.com/u/114939201?v=4",
           "htmlUrl": "https://github.com/longsizhuo"
@@ -2358,6 +2392,23 @@
       ]
     },
     {
+      "docId": "kw44if3s2zi4w2gs1gfhxvoz",
+      "path": "app/docs/CommunityShare/Leetcode/6323. 将钱分给最多的儿童_translated.md",
+      "contributorStats": {
+        "114939201": 1
+      },
+      "contributors": [
+        {
+          "githubId": "114939201",
+          "contributions": 1,
+          "lastContributedAt": "2025-12-07T03:00:19.000Z",
+          "login": "longsizhuo",
+          "avatarUrl": "https://avatars.githubusercontent.com/u/114939201?v=4",
+          "htmlUrl": "https://github.com/longsizhuo"
+        }
+      ]
+    },
+    {
       "docId": "ryp6s59uwc10w2dywgs6f66h",
       "path": "app/docs/CommunityShare/Leetcode/80_translated.md",
       "contributorStats": {
@@ -2402,6 +2453,23 @@
           "githubId": "114939201",
           "contributions": 2,
           "lastContributedAt": "2025-11-24T03:05:26.000Z",
+          "login": "longsizhuo",
+          "avatarUrl": "https://avatars.githubusercontent.com/u/114939201?v=4",
+          "htmlUrl": "https://github.com/longsizhuo"
+        }
+      ]
+    },
+    {
+      "docId": "axhoyzdtxoc82q58j1os57c8",
+      "path": "app/docs/CommunityShare/Leetcode/994.腐烂的橘子_translated.md",
+      "contributorStats": {
+        "114939201": 1
+      },
+      "contributors": [
+        {
+          "githubId": "114939201",
+          "contributions": 1,
+          "lastContributedAt": "2025-12-06T03:00:05.000Z",
           "login": "longsizhuo",
           "avatarUrl": "https://avatars.githubusercontent.com/u/114939201?v=4",
           "htmlUrl": "https://github.com/longsizhuo"
