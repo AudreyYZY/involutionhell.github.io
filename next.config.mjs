@@ -61,6 +61,11 @@ const config = {
         hostname: "placehold.co",
         pathname: "/**",
       },
+      {
+        protocol: "https",
+        hostname: "mirrors.creativecommons.org",
+        pathname: "/**",
+      },
     ],
     unoptimized: true,
     formats: ["image/avif", "image/webp"],

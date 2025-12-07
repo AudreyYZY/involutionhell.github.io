@@ -9,7 +9,7 @@ import reactHooks from "eslint-plugin-react-hooks";
 // 可选：自动删除无用 import
 import unusedImports from "eslint-plugin-unused-imports";
 
-export default [
+const config = [
   ...next,
   ...nextCoreWebVitals,
   ...nextTypescript,
@@ -82,3 +82,5 @@ export default [
     },
   },
 ];
+
+export default config;
