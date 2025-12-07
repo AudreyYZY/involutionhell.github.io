@@ -1,6 +1,6 @@
 {
   "repo": "InvolutionHell/involutionhell",
-  "generatedAt": "2025-12-07T17:21:21.371Z",
+  "generatedAt": "2025-12-07T17:51:28.161Z",
   "docsDir": "app/docs",
   "totalDocs": 135,
   "results": [
@@ -2140,13 +2140,13 @@
       "docId": "ylpucy1rbbnfpe3t62u8kcfq",
       "path": "app/docs/CommunityShare/Leetcode/142.环形链表II_translated.md",
       "contributorStats": {
-        "114939201": 3
+        "114939201": 4
       },
       "contributors": [
         {
           "githubId": "114939201",
-          "contributions": 3,
-          "lastContributedAt": "2025-12-07T17:03:33.000Z",
+          "contributions": 4,
+          "lastContributedAt": "2025-12-07T17:46:06.000Z",
           "login": "longsizhuo",
           "avatarUrl": "https://avatars.githubusercontent.com/u/114939201?v=4",
           "htmlUrl": "https://github.com/longsizhuo"
@@ -2327,13 +2327,13 @@
       "docId": "r12u8o7j73oxhbvgphi939fb",
       "path": "app/docs/CommunityShare/Leetcode/3072. 将元素分配到两个数组中 II_translated.md",
       "contributorStats": {
-        "114939201": 2
+        "114939201": 3
       },
       "contributors": [
         {
           "githubId": "114939201",
-          "contributions": 2,
-          "lastContributedAt": "2025-12-02T03:05:20.000Z",
+          "contributions": 3,
+          "lastContributedAt": "2025-12-07T17:46:06.000Z",
           "login": "longsizhuo",
           "avatarUrl": "https://avatars.githubusercontent.com/u/114939201?v=4",
           "htmlUrl": "https://github.com/longsizhuo"
@@ -2378,13 +2378,13 @@
       "docId": "wen0bbo8m93oih1mx6sva9sh",
       "path": "app/docs/CommunityShare/Leetcode/538.把二叉搜索树转换为累加树_translated.md",
       "contributorStats": {
-        "114939201": 2
+        "114939201": 3
       },
       "contributors": [
         {
           "githubId": "114939201",
-          "contributions": 2,
-          "lastContributedAt": "2025-11-30T03:06:25.000Z",
+          "contributions": 3,
+          "lastContributedAt": "2025-12-07T17:46:06.000Z",
           "login": "longsizhuo",
           "avatarUrl": "https://avatars.githubusercontent.com/u/114939201?v=4",
           "htmlUrl": "https://github.com/longsizhuo"
@@ -2395,13 +2395,13 @@
       "docId": "kw44if3s2zi4w2gs1gfhxvoz",
       "path": "app/docs/CommunityShare/Leetcode/6323. 将钱分给最多的儿童_translated.md",
       "contributorStats": {
-        "114939201": 2
+        "114939201": 3
       },
       "contributors": [
         {
           "githubId": "114939201",
-          "contributions": 2,
-          "lastContributedAt": "2025-12-07T17:03:33.000Z",
+          "contributions": 3,
+          "lastContributedAt": "2025-12-07T17:46:06.000Z",
           "login": "longsizhuo",
           "avatarUrl": "https://avatars.githubusercontent.com/u/114939201?v=4",
           "htmlUrl": "https://github.com/longsizhuo"
@@ -2463,13 +2463,13 @@
       "docId": "axhoyzdtxoc82q58j1os57c8",
       "path": "app/docs/CommunityShare/Leetcode/994.腐烂的橘子_translated.md",
       "contributorStats": {
-        "114939201": 2
+        "114939201": 3
       },
       "contributors": [
         {
           "githubId": "114939201",
-          "contributions": 2,
-          "lastContributedAt": "2025-12-07T17:03:33.000Z",
+          "contributions": 3,
+          "lastContributedAt": "2025-12-07T17:46:06.000Z",
           "login": "longsizhuo",
           "avatarUrl": "https://avatars.githubusercontent.com/u/114939201?v=4",
           "htmlUrl": "https://github.com/longsizhuo"
