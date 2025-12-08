@@ -1,6 +1,6 @@
 ---
 title: 146.LRU cache
-date: '2024.01.01 0:00'
+date: "2024.01.01 0:00"
 tags:
   - Python
   - answer
@@ -8,21 +8,23 @@ tags:
   - design
   - Hash table
   - 双向Linked
-        
 abbrlink: b9130c0e
+docId: u0szm4sv8mr3on3ivbfo5r84
 ---
 
 # topic：
-I met for the first time：'2023/3/14-15:21'
 
+I met for the first time：'2023/3/14-15:21'
 
 [146.LRU cache.md](https://leetcode-cn.com/problems/lru-cache/)
 
 # Thought：
+
 Simple simulation，Use the dictionary to make it，好像完全没用到双向Linked和LRU的Thought。。。I'm guilty，I can remember the air conditioner made in half a year ago。
 answer就看Code的注释应该就能看懂，I will reply if I don’t understand。
 
 # Code：
+
 ```python
 class LRUCache:
 
