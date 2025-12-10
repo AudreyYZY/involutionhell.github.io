@@ -1,6 +1,6 @@
 ---
 title: 219.Existing duplicate elements II Hash table graphics
-date: '2024.01.01 0:00'
+date: "2024.01.01 0:00"
 categories:
   - - Python
     - Hash table
@@ -10,6 +10,7 @@ tags:
   - - Python
   - - solved
 abbrlink: 16b0e9f1
+docId: k4btd9x3l3xnnl4dnr64d8cq
 ---
 
 # Thought
@@ -40,6 +41,7 @@ class Solution:
 ```
 
 look[@Gongshui Sanye](/u/ac_oier)Gongshui Sanye的解法后，Only think of，这道题的目的是为了练习双指针在Hash table中的应用，TAThe original words are sorting the meaning：Whether the existence does not exceed k+1k + 1k+1 window，window内有相同元素。
+
 ```
 #Sort out the meaning：Whether the existence does not exceed k+1k + 1k+1 window，window内有相同元素。
 class Solution:
