@@ -14,7 +14,7 @@ import type { Session } from "next-auth";
 import { buildDocsNewUrl } from "@/lib/github";
 import {
   FILENAME_PATTERN,
-  ensureMarkdownExtension,
+  normalizeMarkdownFilename,
   stripMarkdownExtension,
 } from "@/lib/submission";
 
@@ -72,7 +72,7 @@ export function EditorPageClient({ session }: EditorPageClientProps) {
   const handleImageCountChange = useCallback((count: number) => {
     setImageCount(count);
   }, []);
-  const previewFilename = filename ? ensureMarkdownExtension(filename) : "";
+  const previewFilename = filename ? normalizeMarkdownFilename(filename) : "";
 
   /**
    * 上传单个图片到 R2
@@ -137,10 +137,12 @@ export function EditorPageClient({ session }: EditorPageClientProps) {
         return;
       }
 
-      const normalizedFilename = ensureMarkdownExtension(filename);
+      const normalizedFilename = normalizeMarkdownFilename(filename);
       const filenameBase = stripMarkdownExtension(normalizedFilename);
       if (!filenameBase || !FILENAME_PATTERN.test(filenameBase)) {
-        alert("文件名仅支持英文、数字、连字符或下划线，并需以字母或数字开头。");
+        alert(
+          "文件名仅支持字母、数字、连字符或下划线，并需以字母或数字开头（已自动清洗空格和特殊符号）。",
+        );
         return;
       }
 

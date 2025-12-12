@@ -2,6 +2,7 @@ import { auth } from "@/auth";
 import { NextRequest, NextResponse } from "next/server";
 import { S3Client, PutObjectCommand } from "@aws-sdk/client-s3";
 import { getSignedUrl } from "@aws-sdk/s3-request-presigner";
+import { sanitizeDocumentSlug, sanitizeResourceKey } from "@/lib/sanitizer";
 
 /**
  * R2 配置
@@ -81,7 +82,9 @@ export async function POST(request: NextRequest) {
     // 格式：users/{userId}/{article-slug}/{timestamp}-{filename}
     const timestamp = Date.now();
     const userId = session.user.id;
-    const key = `users/${userId}/${articleSlug}/${timestamp}-${filename}`;
+    const sanitizedSlug = sanitizeDocumentSlug(articleSlug);
+    const sanitizedFilename = sanitizeResourceKey(filename);
+    const key = `users/${userId}/${sanitizedSlug}/${timestamp}-${sanitizedFilename}`;
 
     // 创建 PutObject 命令
     const command = new PutObjectCommand({

@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useState } from "react";
 
 import { useEditorStore } from "@/lib/editor-store";
 import { Input } from "@/components/ui/input";
@@ -24,15 +24,17 @@ export function EditorMetadataForm() {
   } = useEditorStore();
 
   const [tagsInputValue, setTagsInputValue] = useState(() => tags.join(", "));
-  const skipNextSync = useRef(false);
+  const [skipNextSync, setSkipNextSync] = useState(false);
+  const [prevTags, setPrevTags] = useState(tags);
 
-  useEffect(() => {
-    if (skipNextSync.current) {
-      skipNextSync.current = false;
-      return;
+  if (tags !== prevTags) {
+    setPrevTags(tags);
+    if (skipNextSync) {
+      setSkipNextSync(false);
+    } else {
+      setTagsInputValue(tags.join(", "));
     }
-    setTagsInputValue(tags.join(", "));
-  }, [tags]);
+  }
 
   // 处理标签输入（逗号分隔）
   const handleTagsChange = (value: string) => {
@@ -42,14 +44,14 @@ export function EditorMetadataForm() {
       .map((tag) => tag.trim())
       .filter((tag) => tag.length > 0);
 
-    skipNextSync.current = true;
+    setSkipNextSync(true);
     setTags(processedTags);
   };
 
   // 处理标签输入框失去焦点 - 过滤所有空标签并同步展示值
   const handleTagsBlur = () => {
     const filteredTags = tags.filter((tag) => tag.length > 0);
-    skipNextSync.current = true;
+    setSkipNextSync(true);
     setTags(filteredTags);
     setTagsInputValue(filteredTags.join(", "));
   };

@@ -6,6 +6,7 @@ import type { DataNode } from "antd/es/tree";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/app/components/ui/label";
 import { type DirNode } from "@/lib/submission";
+import { sanitizeDocumentSlug } from "@/lib/sanitizer";
 import {
   CREATE_SUBDIR_SUFFIX,
   toTreeSelectData,
@@ -50,15 +51,18 @@ export function DocsDestinationForm({ onChange }: DocsDestinationFormProps) {
 
   const options = useMemo(() => toTreeSelectData(tree), [tree]);
 
+  const sanitizedSubdir = useMemo(
+    () => sanitizeDocumentSlug(newSub, ""),
+    [newSub],
+  );
+
   const finalDirPath = useMemo(() => {
     if (!selectedKey) return "";
     if (!selectedKey.endsWith(CREATE_SUBDIR_SUFFIX)) return selectedKey;
     const [l1] = selectedKey.split("/");
-    if (!l1) return "";
-    const sanitized = newSub.trim().replace(/\s+/g, "-");
-    if (!sanitized) return "";
-    return `${l1}/${sanitized}`;
-  }, [selectedKey, newSub]);
+    if (!l1 || !sanitizedSubdir) return "";
+    return `${l1}/${sanitizedSubdir}`;
+  }, [selectedKey, sanitizedSubdir]);
 
   useEffect(() => {
     onChange?.(finalDirPath);
@@ -113,7 +117,8 @@ export function DocsDestinationForm({ onChange }: DocsDestinationFormProps) {
             onChange={(e) => setNewSub(e.target.value)}
           />
           <p className="text-xs text-muted-foreground">
-            将创建路径：{selectedKey.split("/")[0]} / {newSub || "<未填写>"}
+            将创建路径：{selectedKey.split("/")[0]} /{" "}
+            {sanitizedSubdir || "<未填写>"}
           </p>
         </div>
       )}

@@ -20,11 +20,16 @@ import { useRouter } from "next/navigation";
 import { TreeSelect } from "antd";
 import { DataNode } from "antd/es/tree";
 import { buildDocsNewUrl } from "@/lib/github";
-import { type DirNode, FILENAME_PATTERN } from "@/lib/submission";
+import {
+  FILENAME_PATTERN,
+  normalizeFilenameBase,
+  type DirNode,
+} from "@/lib/submission";
 import {
   CREATE_SUBDIR_SUFFIX,
   toTreeSelectData,
 } from "@/app/components/contribute/tree-utils";
+import { sanitizeDocumentSlug } from "@/lib/sanitizer";
 
 // 统一调用工具函数生成 GitHub 新建链接，路径规则与 Edit 按钮一致
 function buildGithubNewUrl(dirPath: string, filename: string, title: string) {
@@ -59,22 +64,26 @@ export function Contribute() {
   const [articleFile, setArticleFile] = useState("");
   const [articleFileTouched, setArticleFileTouched] = useState(false);
 
-  const trimmedArticleFile = useMemo(() => articleFile.trim(), [articleFile]);
+  const normalizedArticleFile = useMemo(
+    () => normalizeFilenameBase(articleFile),
+    [articleFile],
+  );
   const { isFileNameValid, fileNameError } = useMemo(() => {
-    if (!trimmedArticleFile) {
+    if (!normalizedArticleFile) {
       return {
         isFileNameValid: false,
         fileNameError: "请填写文件名。",
       };
     }
-    if (!FILENAME_PATTERN.test(trimmedArticleFile)) {
+    if (!FILENAME_PATTERN.test(normalizedArticleFile)) {
       return {
         isFileNameValid: false,
-        fileNameError: "文件名仅支持英文、数字、连字符或下划线。",
+        fileNameError:
+          "文件名仅支持字母、数字、连字符或下划线，并需以字母或数字开头。",
       };
     }
     return { isFileNameValid: true, fileNameError: "" };
-  }, [trimmedArticleFile]);
+  }, [normalizedArticleFile]);
 
   useEffect(() => {
     let mounted = true;
@@ -99,22 +108,31 @@ export function Contribute() {
 
   const options = useMemo(() => toTreeSelectData(tree), [tree]);
 
+  const sanitizedSubdir = useMemo(
+    () => sanitizeDocumentSlug(newSub, ""),
+    [newSub],
+  );
+
   const finalDirPath = useMemo(() => {
     if (!selectedKey) return "";
     if (selectedKey.endsWith(CREATE_SUBDIR_SUFFIX)) {
       const l1 = selectedKey.split("/")[0];
-      if (!newSub.trim()) return "";
-      return `${l1}/${newSub.trim().replace(/\s+/g, "-")}`;
+      if (!l1 || !sanitizedSubdir) return "";
+      return `${l1}/${sanitizedSubdir}`;
     }
     return selectedKey;
-  }, [selectedKey, newSub]);
+  }, [selectedKey, sanitizedSubdir]);
 
   const canProceed = !!finalDirPath && isFileNameValid;
 
   const handleOpenGithub = () => {
     if (!canProceed) return;
-    const filename = trimmedArticleFile.toLowerCase();
+    if (!normalizedArticleFile) return;
+    const filename = normalizedArticleFile;
     const title = articleTitle || filename;
+    if (filename !== articleFile) {
+      setArticleFile(filename);
+    }
     window.open(
       buildGithubNewUrl(finalDirPath, filename, title),
       "_blank",
@@ -263,7 +281,8 @@ export function Contribute() {
               onChange={(e) => setNewSub(e.target.value)}
             />
             <p className="text-xs text-muted-foreground">
-              将创建路径：{selectedKey.split("/")[0]} / {newSub || "<未填写>"}
+              将创建路径：{selectedKey.split("/")[0]} /{" "}
+              {sanitizedSubdir || "<未填写>"}
             </p>
           </div>
         )}
