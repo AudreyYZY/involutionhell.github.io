@@ -1,17 +1,8 @@
 # 1) 将 /images/* 文章图片就近复制并更新引用
-# 记录迁移前的变更状态
-BEFORE_STATUS=$(git status --porcelain)
-
 pnpm migrate:images || exit 1
 
-# 检查迁移后是否有新的变更
-AFTER_STATUS=$(git status --porcelain)
-
-if [ "$BEFORE_STATUS" != "$AFTER_STATUS" ]; then
-  echo "检测到迁移脚本产生了变更，添加所有变更到暂存区以确保完整提交..."
-  # 只添加由于迁移产生的变更，而不是用户未暂存的所有变更
-  git add -u
-fi
+# 将迁移后的变更加入暂存，确保本次提交包含更新
+git add -A
 
 # 2) 校验图片路径与命名（不合规则阻止提交）
 pnpm lint:images || exit 1
