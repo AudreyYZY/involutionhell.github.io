@@ -34,10 +34,18 @@ export function DocsDestinationForm({ onChange }: DocsDestinationFormProps) {
           setTree(data.tree || []);
         }
       } catch {
-        const res = await fetch("/docs-tree.json").catch(() => null);
-        const data = await res?.json();
-        if (mounted && data?.ok) {
-          setTree(data.tree || []);
+        // API 失败是预期行为（开发环境常见），静默回退到静态文件
+        try {
+          const res = await fetch("/docs-tree.json");
+          if (!res.ok) throw new Error(`HTTP ${res.status}`);
+          const data = await res.json();
+          if (mounted && data?.ok) {
+            setTree(data.tree || []);
+          }
+        } catch (fallbackError) {
+          // 静态文件也失败才是真正的问题
+          console.error("无法加载文档目录树:", fallbackError);
+          // 用户仍可继续使用，但无法选择目录
         }
       } finally {
         if (mounted) setLoading(false);
