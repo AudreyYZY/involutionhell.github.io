@@ -1,5 +1,7 @@
 # AGENT Guidelines
 
+**你应该和用户说中文**
+
 Welcome! This repository hosts the Involution Hell documentation site, built with Next.js App Router, Fumadocs UI, TypeScript, and Tailwind CSS. Follow the instructions below whenever you contribute changes.
 
 ## General workflow
