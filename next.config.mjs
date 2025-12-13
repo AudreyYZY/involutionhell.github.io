@@ -1,13 +1,20 @@
 ﻿// next.config.mjs
 import { createMDX } from "fumadocs-mdx/next";
 import createNextIntlPlugin from "next-intl/plugin";
-import { remarkImage } from "fumadocs-core/mdx-plugins";
 
+/**
+ * IMPORTANT: remarkImage 配置已移至 source.config.ts 统一管理
+ *
+ * 原因：
+ * 1. 避免配置冲突 - 之前这里的 remarkPlugins 会覆盖 source.config.ts 的配置
+ * 2. 统一管理 - 所有 MDX 相关配置（remarkPlugins, rehypePlugins, remarkImageOptions）
+ *    都在 source.config.ts 中，便于维护
+ *
+ * 如需修改图片处理配置，请前往 source.config.ts
+ */
 const withMDX = createMDX({
   configPath: "source.config.ts",
-  mdxOptions: {
-    remarkPlugins: [[remarkImage, { onError: "ignore", external: true }]],
-  },
+  // mdxOptions 留空，让 source.config.ts 统一管理所有 remark/rehype 插件
 });
 const withNextIntl = createNextIntlPlugin("./i18n.ts");
 
@@ -67,6 +74,25 @@ const config = {
         pathname: "/**",
       },
     ],
+    /**
+     * CRITICAL: 禁用 Next.js 图片优化
+     *
+     * 原因：Vercel 的图片优化配额已耗尽
+     *
+     * 重要说明：
+     * - Vercel 免费计划的图片优化有配额限制（每月 1000 次源图片优化）
+     * - 我们的网站图片较多，很快会超出配额
+     * - 超出配额后会导致图片加载失败或构建失败
+     * - 因此必须设置 unoptimized: true 禁用图片优化
+     *
+     * 影响：
+     * - ✅ 图片会以原始格式和尺寸提供（不会被 Vercel 优化）
+     * - ✅ 不消耗 Vercel 配额
+     * - ⚠️  失去自动格式转换（WebP/AVIF）和尺寸优化
+     * - ⚠️  可能有轻微的性能影响（但我们已使用 Cloudflare R2 等 CDN）
+     *
+     * 如果未来升级到付费计划或迁移到自托管，可以考虑移除此选项
+     */
     unoptimized: true,
     formats: ["image/avif", "image/webp"],
   },

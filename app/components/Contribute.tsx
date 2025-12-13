@@ -12,18 +12,24 @@ import {
   DialogTrigger,
 } from "@/components/ui/dialog";
 import { Input } from "@/components/ui/input";
-import { ExternalLink, Plus, Sparkles } from "lucide-react";
+import { ExternalLink, Sparkles } from "lucide-react";
 import styles from "./Contribute.module.css";
+import { useRouter } from "next/navigation";
 
 // --- antd
 import { TreeSelect } from "antd";
-import type { DefaultOptionType } from "antd/es/select";
 import { DataNode } from "antd/es/tree";
 import { buildDocsNewUrl } from "@/lib/github";
-
-type DirNode = { name: string; path: string; children?: DirNode[] };
-
-const FILENAME_PATTERN = /^[A-Za-z0-9][A-Za-z0-9_-]+$/;
+import {
+  FILENAME_PATTERN,
+  normalizeFilenameBase,
+  type DirNode,
+} from "@/lib/submission";
+import {
+  CREATE_SUBDIR_SUFFIX,
+  toTreeSelectData,
+} from "@/app/components/contribute/tree-utils";
+import { sanitizeDocumentSlug } from "@/lib/sanitizer";
 
 // 统一调用工具函数生成 GitHub 新建链接，路径规则与 Edit 按钮一致
 function buildGithubNewUrl(dirPath: string, filename: string, title: string) {
@@ -44,35 +50,8 @@ Write your content here.
   return buildDocsNewUrl(dirPath, params);
 }
 
-// ✅ 用纯文本 label + 一级节点 selectable:false
-function toTreeSelectData(tree: DirNode[]): DefaultOptionType[] {
-  return tree.map((l1) => ({
-    key: l1.path,
-    value: l1.path,
-    label: l1.name,
-    selectable: false, // ✅ 一级不可选
-    children: [
-      ...(l1.children || []).map((l2) => ({
-        key: l2.path,
-        value: l2.path,
-        label: `${l1.name} / ${l2.name}`, // 纯文本，方便搜索
-        isLeaf: true,
-      })),
-      {
-        key: `${l1.path}/__create__`,
-        value: `${l1.path}/__create__`,
-        label: (
-          <span className="inline-flex items-center">
-            <Plus className="mr-1 h-3.5 w-3.5" />
-            在「{l1.name}」下新建二级子栏目…
-          </span>
-        ),
-      },
-    ],
-  }));
-}
-
 export function Contribute() {
+  const router = useRouter();
   const [open, setOpen] = useState(false);
   const [tree, setTree] = useState<DirNode[]>([]);
   const [loading, setLoading] = useState(false);
@@ -85,22 +64,26 @@ export function Contribute() {
   const [articleFile, setArticleFile] = useState("");
   const [articleFileTouched, setArticleFileTouched] = useState(false);
 
-  const trimmedArticleFile = useMemo(() => articleFile.trim(), [articleFile]);
+  const normalizedArticleFile = useMemo(
+    () => normalizeFilenameBase(articleFile),
+    [articleFile],
+  );
   const { isFileNameValid, fileNameError } = useMemo(() => {
-    if (!trimmedArticleFile) {
+    if (!normalizedArticleFile) {
       return {
         isFileNameValid: false,
         fileNameError: "请填写文件名。",
       };
     }
-    if (!FILENAME_PATTERN.test(trimmedArticleFile)) {
+    if (!FILENAME_PATTERN.test(normalizedArticleFile)) {
       return {
         isFileNameValid: false,
-        fileNameError: "文件名仅支持英文、数字、连字符或下划线。",
+        fileNameError:
+          "文件名仅支持字母、数字、连字符或下划线，并需以字母或数字开头。",
       };
     }
     return { isFileNameValid: true, fileNameError: "" };
-  }, [trimmedArticleFile]);
+  }, [normalizedArticleFile]);
 
   useEffect(() => {
     let mounted = true;
@@ -125,22 +108,31 @@ export function Contribute() {
 
   const options = useMemo(() => toTreeSelectData(tree), [tree]);
 
+  const sanitizedSubdir = useMemo(
+    () => sanitizeDocumentSlug(newSub, ""),
+    [newSub],
+  );
+
   const finalDirPath = useMemo(() => {
     if (!selectedKey) return "";
-    if (selectedKey.endsWith("/__create__")) {
+    if (selectedKey.endsWith(CREATE_SUBDIR_SUFFIX)) {
       const l1 = selectedKey.split("/")[0];
-      if (!newSub.trim()) return "";
-      return `${l1}/${newSub.trim().replace(/\s+/g, "-")}`;
+      if (!l1 || !sanitizedSubdir) return "";
+      return `${l1}/${sanitizedSubdir}`;
     }
     return selectedKey;
-  }, [selectedKey, newSub]);
+  }, [selectedKey, sanitizedSubdir]);
 
   const canProceed = !!finalDirPath && isFileNameValid;
 
   const handleOpenGithub = () => {
     if (!canProceed) return;
-    const filename = trimmedArticleFile.toLowerCase();
+    if (!normalizedArticleFile) return;
+    const filename = normalizedArticleFile;
     const title = articleTitle || filename;
+    if (filename !== articleFile) {
+      setArticleFile(filename);
+    }
     window.open(
       buildGithubNewUrl(finalDirPath, filename, title),
       "_blank",
@@ -173,6 +165,10 @@ export function Contribute() {
                      bg-gradient-to-r from-sky-300 via-sky-400 to-blue-600
                      dark:from-indigo-950 dark:via-slate-900 dark:to-black
                      hover:shadow-[0_25px_60px_-12px] hover:scale-[1.03] transition-all duration-300 ease-out"
+            onClick={(event) => {
+              event.preventDefault();
+              router.push("/editor");
+            }}
           >
             {/* Day gradient shimmer */}
             <span
@@ -276,7 +272,7 @@ export function Contribute() {
           />
         </div>
 
-        {selectedKey.endsWith("/__create__") && (
+        {selectedKey.endsWith(CREATE_SUBDIR_SUFFIX) && (
           <div className="space-y-1">
             <label className="text-sm font-medium">新建二级子栏目名称</label>
             <Input
@@ -285,7 +281,8 @@ export function Contribute() {
               onChange={(e) => setNewSub(e.target.value)}
             />
             <p className="text-xs text-muted-foreground">
-              将创建路径：{selectedKey.split("/")[0]} / {newSub || "<未填写>"}
+              将创建路径：{selectedKey.split("/")[0]} /{" "}
+              {sanitizedSubdir || "<未填写>"}
             </p>
           </div>
         )}

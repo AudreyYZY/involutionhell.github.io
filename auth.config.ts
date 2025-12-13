@@ -27,14 +27,24 @@ export const authConfig = {
   callbacks: {
     authorized({ auth, request: { nextUrl } }) {
       const isLoggedIn = !!auth?.user;
-      const isOnProtectedRoute = nextUrl.pathname.startsWith("/dashboard");
+      const isOnDashboard = nextUrl.pathname.startsWith("/dashboard");
+      const isOnEditor = nextUrl.pathname.startsWith("/editor");
 
-      if (isOnProtectedRoute) {
+      // 保护 /dashboard 和 /editor 路由
+      // if (isOnDashboard || isOnEditor) {
+      if (isOnDashboard || isOnEditor) {
         if (isLoggedIn) return true;
-        return false;
+        return false; // 未登录用户会被重定向到 /login
       }
 
       return true;
+    },
+    async redirect({ url, baseUrl }) {
+      // 允许相对路径的回调 URL
+      if (url.startsWith("/")) return `${baseUrl}${url}`;
+      // 允许与 baseUrl 同源的回调 URL
+      if (new URL(url).origin === baseUrl) return url;
+      return baseUrl;
     },
     async signIn() {
       return true;
