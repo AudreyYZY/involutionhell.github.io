@@ -5,13 +5,72 @@
 1. 在首页点击「我要投稿」，或在任意文档右上角使用「编辑」/「我要投稿」按钮
    ![button](./public/git_assets/button.png)
 
-2. 浮窗中选择想贡献的章节，也可以先新建一个文件夹
-   ![setting](./public//git_assets/setting.png)
-   ![setting2](./public//git_assets/setting2.png)
-   选好后点击「下一步」
+2. 因为编辑器自带了内卷地狱的图床供大家直接上传图片便捷使用，因此安全起见必须登录才能使用编辑器功能， 如果你已登录，则会直接进入，如果没登录则会进入以下页面
+   ![ae47ad870b3bc27bb54d03d38eb72c8a.png](https://pub-fa1987abe8794da6ba45cdf9284954b3.r2.dev/users/7/contributing-guide/1765632611288-ae47ad870b3bc27bb54d03d38eb72c8a.png)
 
-3. 页面会跳转到 GitHub，新建文档时请保留顶部 Frontmatter 结构
-   ![file](./public//git_assets/file.png)
+   点sign in后，会跳转到github请求登录，登录后即可进入投稿页面。
+
+   首先投稿前需要填写稿件的基本信息：
+
+   ![8a86555b863c1771491981c21367aa47.png](https://pub-fa1987abe8794da6ba45cdf9284954b3.r2.dev/users/7/contributing-guide/1765632610832-8a86555b863c1771491981c21367aa47.png)
+
+   标签将用于未来辅助人们用分类功能查看文章
+
+   然后下滑即可选择投稿目录：
+
+   浮窗中选择想贡献的章节，也可以先新建一个文件夹
+
+   ![63bc1e3e7e1ea3bd319b8c898bfa19ed.png](https://pub-fa1987abe8794da6ba45cdf9284954b3.r2.dev/users/7/contributing-guide/1765632610739-63bc1e3e7e1ea3bd319b8c898bfa19ed.png)
+
+   ![96690ba7576ff0bbe82e117a19a218ae.png](https://pub-fa1987abe8794da6ba45cdf9284954b3.r2.dev/users/7/contributing-guide/1765632610837-96690ba7576ff0bbe82e117a19a218ae.png)
+
+   然后就能进入编辑框开始写文档了
+
+   编辑器是类notion的设计，因此你可以选择文字来添加效果，
+
+   ![1bf581fbc6d1eaa71cf9b91f8c9d5787.png](https://pub-fa1987abe8794da6ba45cdf9284954b3.r2.dev/users/7/contributing-guide/1765632610704-1bf581fbc6d1eaa71cf9b91f8c9d5787.png)
+
+   也可以直接使用markdown代码来编辑
+
+   <br />
+
+   ```Markdown
+   # 标题1
+   ## 标题2 
+   ```
+ 
+   每点击一行，左边都有加号按钮，可以快捷添加你要的内容块
+
+   ![image.png](https://pub-fa1987abe8794da6ba45cdf9284954b3.r2.dev/users/7/contributing-guide/1765632611285-image.png)
+
+   ![image.png](https://pub-fa1987abe8794da6ba45cdf9284954b3.r2.dev/users/7/contributing-guide/1765632610905-image.png)
+
+   ![image.png](https://pub-fa1987abe8794da6ba45cdf9284954b3.r2.dev/users/7/contributing-guide/1765632610926-image.png)
+
+   ![image.png](https://pub-fa1987abe8794da6ba45cdf9284954b3.r2.dev/users/7/contributing-guide/1765632611026-image.png)
+
+   加号旁边的格子按钮则是可以拖拽文本块想要放置的位置，上拖下拖
+
+   ![image.png](https://pub-fa1987abe8794da6ba45cdf9284954b3.r2.dev/users/7/contributing-guide/1765632611017-image.png)
+
+   **值得一提的是编辑器的自带图床功能**
+
+   你只需要粘贴图片到编辑器里，或是用自带的image代码块添加图片
+
+   <br />
+
+   ![image.png](https://pub-fa1987abe8794da6ba45cdf9284954b3.r2.dev/users/7/contributing-guide/1765632611082-image.png)
+
+   ，提交后，图片就会自动被上传到内卷地狱的图片，再也不需要自己手动配置图床手动上传了！
+
+   等你编辑完了以后，就可以点击底部按钮发布文章了。
+
+3. 页面会跳转到 GitHub
+
+   ![image.png](https://pub-fa1987abe8794da6ba45cdf9284954b3.r2.dev/users/7/contributing-guide/1765632611098-image.png)
+
+   点击右上角的commit changes
+
 
 4. 点击 `Commit changes`，若是第一次投稿，GitHub 会提示先 Fork 仓库；按提示操作一次即可
    ![fork](./public//git_assets/need_fork.png)
