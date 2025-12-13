@@ -1,6 +1,6 @@
 {
   "repo": "InvolutionHell/involutionhell",
-  "generatedAt": "2025-12-13T03:06:52.333Z",
+  "generatedAt": "2025-12-13T15:44:36.447Z",
   "docsDir": "app/docs",
   "totalDocs": 141,
   "results": [
@@ -2140,6 +2140,7 @@
       "docId": "p8igr19xfxnuyo2lpngnr6fg",
       "path": "app/docs/CommunityShare/Leetcode/1234. 替换子串得到平衡字符串_translated.md",
       "contributorStats": {
+        "7187663": 1,
         "114939201": 4
       },
       "contributors": [
@@ -2150,6 +2151,14 @@
           "login": "longsizhuo",
           "avatarUrl": "https://avatars.githubusercontent.com/u/114939201?v=4",
           "htmlUrl": "https://github.com/longsizhuo"
+        },
+        {
+          "githubId": "7187663",
+          "contributions": 1,
+          "lastContributedAt": "2025-11-16T14:07:23.000Z",
+          "login": "Crokily",
+          "avatarUrl": "https://avatars.githubusercontent.com/u/7187663?v=4",
+          "htmlUrl": "https://github.com/Crokily"
         }
       ]
     },
@@ -2344,13 +2353,13 @@
       "docId": "s3w19zdm6yhkhj4o0ba3kbal",
       "path": "app/docs/CommunityShare/Leetcode/2341. 数组能形成多少数对_translated.md",
       "contributorStats": {
-        "114939201": 1
+        "114939201": 2
       },
       "contributors": [
         {
           "githubId": "114939201",
-          "contributions": 1,
-          "lastContributedAt": "2025-12-13T03:00:10.000Z",
+          "contributions": 2,
+          "lastContributedAt": "2025-12-13T03:06:53.000Z",
           "login": "longsizhuo",
           "avatarUrl": "https://avatars.githubusercontent.com/u/114939201?v=4",
           "htmlUrl": "https://github.com/longsizhuo"
