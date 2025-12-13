@@ -1,8 +1,8 @@
 {
   "repo": "InvolutionHell/involutionhell",
-  "generatedAt": "2025-12-12T03:07:57.932Z",
+  "generatedAt": "2025-12-13T03:06:52.333Z",
   "docsDir": "app/docs",
-  "totalDocs": 140,
+  "totalDocs": 141,
   "results": [
     {
       "docId": "ue27z7z95yzw3lhhfj7nit1c",
@@ -2341,6 +2341,23 @@
       ]
     },
     {
+      "docId": "s3w19zdm6yhkhj4o0ba3kbal",
+      "path": "app/docs/CommunityShare/Leetcode/2341. 数组能形成多少数对_translated.md",
+      "contributorStats": {
+        "114939201": 1
+      },
+      "contributors": [
+        {
+          "githubId": "114939201",
+          "contributions": 1,
+          "lastContributedAt": "2025-12-13T03:00:10.000Z",
+          "login": "longsizhuo",
+          "avatarUrl": "https://avatars.githubusercontent.com/u/114939201?v=4",
+          "htmlUrl": "https://github.com/longsizhuo"
+        }
+      ]
+    },
+    {
       "docId": "lnx1bszj5aqqqfa50sejjv7n",
       "path": "app/docs/CommunityShare/Leetcode/2639. 查询网格图中每一列的宽度_translated.md",
       "contributorStats": {
@@ -2378,13 +2395,13 @@
       "docId": "y0ntwlksnvj7ymuapqvkvmwr",
       "path": "app/docs/CommunityShare/Leetcode/2894. 分类求和并作差.md",
       "contributorStats": {
-        "114939201": 1
+        "114939201": 2
       },
       "contributors": [
         {
           "githubId": "114939201",
-          "contributions": 1,
-          "lastContributedAt": "2025-12-12T03:00:48.000Z",
+          "contributions": 2,
+          "lastContributedAt": "2025-12-12T03:07:58.000Z",
           "login": "longsizhuo",
           "avatarUrl": "https://avatars.githubusercontent.com/u/114939201?v=4",
           "htmlUrl": "https://github.com/longsizhuo"
