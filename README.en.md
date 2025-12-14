@@ -44,16 +44,28 @@ A collaborative documentation platform built with modern web technologies to hel
 **Prerequisites**
 
 - Node.js 18+
-- pnpm recommended (npm / yarn also work)
+- pnpm 10.20.0 (locked version - see installation instructions below)
 
 **Local preview**
 
 ```bash
 git clone https://github.com/involutionhell/involutionhell.git
 cd involutionhell
+
+# Recommended: Use corepack (comes with Node.js 16.9+)
+corepack enable
+
+# Or install the specific pnpm version globally
+npm install -g pnpm@10.20.0
+
+# Install dependencies
 pnpm install
+
+# Start dev server
 pnpm dev
 ```
+
+⚠️ **Important**: This project locks pnpm to version `10.20.0` in `package.json`. Please use the same version to avoid `pnpm-lock.yaml` format inconsistencies. Check your version with `pnpm --version` or run `pnpm check:pnpm-version` to verify.
 
 Visit [http://localhost:3000](http://localhost:3000) in your browser.
 
