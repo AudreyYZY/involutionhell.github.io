@@ -14,3 +14,4 @@ coverage
 *.log
 .cache
 .turbo
+pnpm-lock.yaml
