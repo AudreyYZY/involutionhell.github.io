@@ -30,10 +30,12 @@ try {
     process.exit(1);
   }
   
-  const expectedVersion = packageManager.split('@')[1];
+  // Extract version: "pnpm@10.20.0" -> "10.20.0"
+  const expectedVersion = packageManager.substring(packageManager.indexOf('@') + 1);
   
-  if (!expectedVersion) {
+  if (!expectedVersion || expectedVersion.trim() === '') {
     console.error('❌ Error: Could not parse pnpm version from packageManager field');
+    console.error(`   packageManager value: ${packageManager}`);
     process.exit(1);
   }
   
