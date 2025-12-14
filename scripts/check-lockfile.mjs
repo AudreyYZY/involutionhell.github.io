@@ -58,7 +58,13 @@ try {
   process.exit(0);
 
 } catch (error) {
-  console.error('❌ Error checking lockfile:', error.message);
-  // Don't fail the commit, just warn
+  if (error.code === 'ENOENT') {
+    console.error('❌ Error: Git repository or command not found');
+  } else if (error.message.includes('not a git repository')) {
+    console.log('⚠️  Not in a git repository, skipping lockfile check');
+  } else {
+    console.error('❌ Error checking lockfile:', error.message);
+  }
+  // Don't fail the commit, just provide information
   process.exit(0);
 }

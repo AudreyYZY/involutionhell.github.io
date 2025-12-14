@@ -43,8 +43,12 @@ jobs:
           if ! git diff --exit-code pnpm-lock.yaml; then
             echo "❌ Error: pnpm-lock.yaml was modified after install"
             echo "This indicates a pnpm version mismatch or corrupted lockfile"
-            echo "Expected pnpm version: $(node -p 'require(\"./package.json\").packageManager')"
-            echo "Actual pnpm version: $(pnpm --version)"
+            echo ""
+            echo "Expected pnpm version from package.json:"
+            node -p "require('./package.json').packageManager || 'not specified'" || echo "Could not read package.json"
+            echo ""
+            echo "Actual pnpm version:"
+            pnpm --version || echo "pnpm not found"
             exit 1
           fi
           echo "✅ Lockfile is consistent"

@@ -30,7 +30,12 @@ try {
     process.exit(1);
   }
   
-  const expectedVersion = packageManager.replace('pnpm@', '');
+  const expectedVersion = packageManager.split('@')[1];
+  
+  if (!expectedVersion) {
+    console.error('❌ Error: Could not parse pnpm version from packageManager field');
+    process.exit(1);
+  }
   
   // Get actual pnpm version
   let actualVersion;
