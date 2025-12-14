@@ -31,9 +31,18 @@ try {
   }
   
   // Extract version: "pnpm@10.20.0" -> "10.20.0"
-  const expectedVersion = packageManager.substring(packageManager.indexOf('@') + 1);
+  // Split and validate to handle edge cases properly
+  const parts = packageManager.split('@');
+  if (parts.length !== 2) {
+    console.error('❌ Error: Invalid packageManager format');
+    console.error(`   Expected format: pnpm@x.y.z`);
+    console.error(`   Actual value: ${packageManager}`);
+    process.exit(1);
+  }
   
-  if (!expectedVersion || expectedVersion.trim() === '') {
+  const expectedVersion = parts[1].trim();
+  
+  if (!expectedVersion) {
     console.error('❌ Error: Could not parse pnpm version from packageManager field');
     console.error(`   packageManager value: ${packageManager}`);
     process.exit(1);
