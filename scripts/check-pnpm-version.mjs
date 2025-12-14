@@ -31,12 +31,14 @@ try {
   }
   
   // Extract version: "pnpm@10.20.0" -> "10.20.0"
-  // Split and validate to handle edge cases properly
+  // The packageManager field format is strictly "package@version"
+  // Additional @ symbols are not part of the standard spec
   const parts = packageManager.split('@');
   if (parts.length !== 2) {
     console.error('❌ Error: Invalid packageManager format');
-    console.error(`   Expected format: pnpm@x.y.z`);
+    console.error(`   Expected format: pnpm@x.y.z (e.g., pnpm@10.20.0)`);
     console.error(`   Actual value: ${packageManager}`);
+    console.error(`   Note: The packageManager field should contain exactly one @ separator`);
     process.exit(1);
   }
   
