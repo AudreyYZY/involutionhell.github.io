@@ -1,14 +1,14 @@
 ---
 title: 1825. Seek out MK average value
-date: '2024.01.01 0:00'
+date: "2024.01.01 0:00"
 tags:
   - - Python
   - - unsolved
   - - difficulty
   - - Multiple set
 abbrlink: 6be57ef7
+docId: n38sohi8zlxesl82tgv854kj
 ---
-
 
 # Problem -solving
 
@@ -33,9 +33,11 @@ if删除后，lower or upper middle的element少于 k indivual，Then from middl
 操作过程middlemaintain middle 的element和 sum
 
 # average value操作
+
 average value = sum/(m−2⋅k)sum / (m - 2\cdot k)sum/(m−2⋅k) （Take down）。
 
 Code with problems：
+
 ```python
 class MKAverage:
 
