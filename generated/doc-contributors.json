@@ -1,6 +1,6 @@
 {
   "repo": "InvolutionHell/involutionhell",
-  "generatedAt": "2025-12-14T03:05:41.786Z",
+  "generatedAt": "2025-12-14T17:50:44.013Z",
   "docsDir": "app/docs",
   "totalDocs": 142,
   "results": [
@@ -2200,13 +2200,13 @@
       "docId": "n38sohi8zlxesl82tgv854kj",
       "path": "app/docs/CommunityShare/Leetcode/1825求出 MK 平均值_translated.md",
       "contributorStats": {
-        "114939201": 1
+        "114939201": 2
       },
       "contributors": [
         {
           "githubId": "114939201",
-          "contributions": 1,
-          "lastContributedAt": "2025-12-14T03:00:13.000Z",
+          "contributions": 2,
+          "lastContributedAt": "2025-12-14T03:05:43.000Z",
           "login": "longsizhuo",
           "avatarUrl": "https://avatars.githubusercontent.com/u/114939201?v=4",
           "htmlUrl": "https://github.com/longsizhuo"
