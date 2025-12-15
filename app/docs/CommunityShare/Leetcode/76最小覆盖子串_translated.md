@@ -1,12 +1,14 @@
 ---
 title: 76Minimum cover string.md
-date: '2024.01.01 0:00'
+date: "2024.01.01 0:00"
 tags:
   - - Python
   - - answer
   - - difficulty
 abbrlink: ae10d3c1
+docId: l358imxaj1mmtth6dydvu54s
 ---
+
 # topic：
 
 [76. Minimum cover string](https://leetcode.cn/problems/minimum-window-substring/description/)
@@ -16,43 +18,50 @@ abbrlink: ae10d3c1
 Not existtWhen all elements are，Right shift right shift
 ExisttWhen all elements are，Left finger shift right，If the right pointer does not reach the far right，Continue to move the right pointer
 If you findt，Jump back
+
 ## optimization：
->The code finds the minimum length window in string s that contains all the characters in string t. The code uses two pointers, left and right, to traverse s and keep track of the window. The isAll function checks if the characters in t are present in the current window.
-To improve the code, consider the following:
-Use a dict dict_keys instead of the isAll function to track the count of each character in the current window, and update the count directly instead of using Counter function repeatedly.
-Remove unused variables ans, hash_1, and dict_t.
-Initialize right outside the loop, and use while right < len(s) and not isAll(dict_keys, dict_t) as the loop condition to terminate when all characters in t are present in the current window.
-Keep track of the minimum window length and the start and end indices of the window, and return s[start:end + 1] at the end.
-get()Method grammar：
+
+> The code finds the minimum length window in string s that contains all the characters in string t. The code uses two pointers, left and right, to traverse s and keep track of the window. The isAll function checks if the characters in t are present in the current window.
+> To improve the code, consider the following:
+> Use a dict dict_keys instead of the isAll function to track the count of each character in the current window, and update the count directly instead of using Counter function repeatedly.
+> Remove unused variables ans, hash_1, and dict_t.
+> Initialize right outside the loop, and use while right < len(s) and not isAll(dict_keys, dict_t) as the loop condition to terminate when all characters in t are present in the current window.
+> Keep track of the minimum window length and the start and end indices of the window, and return s[start:end + 1] at the end.
+> get()Method grammar：
 
 `dict.get(key[, value]) `
+
 ### parameter
 
-	key -- The key to find in the dictionary。
-	value -- Optional，If the value of the specified key does not exist，Back to the default value。
-	return value
-	Return to the value of the specified key，If the key is not in the dictionary, the silent recognition value None Or the default value set。
+    key -- The key to find in the dictionary。
+    value -- Optional，If the value of the specified key does not exist，Back to the default value。
+    return value
+    Return to the value of the specified key，If the key is not in the dictionary, the silent recognition value None Or the default value set。
 
 ### Instance
-	以下Instance展示了 get() How to use the function：
+
+    以下Instance展示了 get() How to use the function：
 
 ### Instance
-	```python
-	#!/usr/bin/python
-	# -*- coding: UTF-8 -*-
-	
-	tinydict = {'Name': 'Runoob', 'Age': 27}
-	
-	print ("Age : %s" %  tinydict.get('Age'))
-	
-	# no setting Sex，也no setting默认的值，Output None
-	print ("Sex : %s" %  tinydict.get('Sex'))  
-	
-	# no setting Salary，Output默认的值  0.0
-	print ('Salary: %s' % tinydict.get('Salary', 0.0))
-	```
+
+    ```python
+    #!/usr/bin/python
+    # -*- coding: UTF-8 -*-
+
+    tinydict = {'Name': 'Runoob', 'Age': 27}
+
+    print ("Age : %s" %  tinydict.get('Age'))
+
+    # no setting Sex，也no setting默认的值，Output None
+    print ("Sex : %s" %  tinydict.get('Sex'))
+
+    # no setting Salary，Output默认的值  0.0
+    print ('Salary: %s' % tinydict.get('Salary', 0.0))
+    ```
+
 # Code：
-```python   Mine
+
+```python Mine
 class Solution:
     def minWindow(self, s: str, t: str) -> str:
         ans = 1000001
@@ -86,6 +95,7 @@ class Solution:
             print(ans, hash_1, dict1.keys())
         return hash_1[ans] if len(hash_1) != 0 else ""
 ```
+
 ```python
 class Solution:
     def minWindow(self, s: str, t: str) -> str:
