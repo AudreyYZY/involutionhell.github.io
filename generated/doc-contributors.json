@@ -1,8 +1,8 @@
 {
   "repo": "InvolutionHell/involutionhell",
-  "generatedAt": "2025-12-15T03:07:22.770Z",
+  "generatedAt": "2025-12-16T03:06:38.320Z",
   "docsDir": "app/docs",
-  "totalDocs": 143,
+  "totalDocs": 144,
   "results": [
     {
       "docId": "ue27z7z95yzw3lhhfj7nit1c",
@@ -2452,6 +2452,23 @@
       ]
     },
     {
+      "docId": "o3knuvbpnki6isfjv3g5ohau",
+      "path": "app/docs/CommunityShare/Leetcode/3138. Minimum Length of Anagram Concatenation.md",
+      "contributorStats": {
+        "114939201": 1
+      },
+      "contributors": [
+        {
+          "githubId": "114939201",
+          "contributions": 1,
+          "lastContributedAt": "2025-12-16T03:00:39.000Z",
+          "login": "longsizhuo",
+          "avatarUrl": "https://avatars.githubusercontent.com/u/114939201?v=4",
+          "htmlUrl": "https://github.com/longsizhuo"
+        }
+      ]
+    },
+    {
       "docId": "udm0daiek9dr22xq4doep5w4",
       "path": "app/docs/CommunityShare/Leetcode/345. 反转字符串中的元音字母_translated.md",
       "contributorStats": {
@@ -2540,13 +2557,13 @@
       "docId": "l358imxaj1mmtth6dydvu54s",
       "path": "app/docs/CommunityShare/Leetcode/76最小覆盖子串_translated.md",
       "contributorStats": {
-        "114939201": 1
+        "114939201": 2
       },
       "contributors": [
         {
           "githubId": "114939201",
-          "contributions": 1,
-          "lastContributedAt": "2025-12-15T03:00:08.000Z",
+          "contributions": 2,
+          "lastContributedAt": "2025-12-15T03:07:23.000Z",
           "login": "longsizhuo",
           "avatarUrl": "https://avatars.githubusercontent.com/u/114939201?v=4",
           "htmlUrl": "https://github.com/longsizhuo"
