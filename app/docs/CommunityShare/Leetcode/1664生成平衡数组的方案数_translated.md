@@ -1,12 +1,13 @@
 ---
 title: 1664. Number of schemes to generate balance numbers One question daily
-date: '2024.01.01 0:00'
+date: "2024.01.01 0:00"
 tags:
   - - Python
   - - answer
   - - Dynamic planning
   - - One question daily
 abbrlink: 1978f474
+docId: ska0npc89ja1r4pdt2qow79u
 ---
 
 [1664. Number of schemes to generate balance numbers](https://leetcode.cn/problems/ways-to-make-a-fair-array/description/?orderBy=most_relevant)
@@ -17,15 +18,16 @@ See when you read the question medium I know that it is definitely not really go
 But it's timeout。。
 
 然后看官方answer，用的Dynamic planning。中心Thought是：
->General nature，Now we will settle down i Delete elements，
-Obviously the bidding i The previous element bidding will not change from this，Bidding i 
-The original was originally j，j>iThe array elements of the bid will move to the bidding j−1，
-Immediately bidding i The subsequent bidding elements will become the rated element，
-The even bidding element will become a strange number of bidding elements。
+
+> General nature，Now we will settle down i Delete elements，
+> Obviously the bidding i The previous element bidding will not change from this，Bidding i
+> The original was originally j，j>iThe array elements of the bid will move to the bidding j−1，
+> Immediately bidding i The subsequent bidding elements will become the rated element，
+> The even bidding element will become a strange number of bidding elements。
 
 # Code
 
-```python  slice
+```python slice
 class Solution:
     def waysToMakeFair(self, nums: List[int]) -> int:
         flag = 0
@@ -36,9 +38,7 @@ class Solution:
         return flag
 ```
 
-
-
-```python  官方answer
+```python 官方answer
 class Solution:
     def waysToMakeFair(self, nums: List[int]) -> int:
         res = odd1 = even1 = odd2 = even2 = 0
@@ -60,13 +60,3 @@ class Solution:
                 even1 += num
         return res
 ```
-
-
-
-
-
-
-
-
-
-
