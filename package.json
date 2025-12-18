@@ -16,7 +16,9 @@
     "docs:sync-cuid": "node scripts/uuid.mjs",
     "lint": "eslint . --ext .ts,.tsx",
     "lint:fix": "eslint . --ext .ts,.tsx --fix",
-    "typecheck": "tsc --noEmit"
+    "typecheck": "tsc --noEmit",
+    "check:pnpm-version": "node scripts/check-pnpm-version.mjs",
+    "check:lockfile": "node scripts/check-lockfile.mjs"
   },
   "dependencies": {
     "@ai-sdk/google": "^2.0.14",

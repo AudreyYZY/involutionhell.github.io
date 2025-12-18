@@ -36,12 +36,20 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
+      # Enable corepack to ensure the exact pnpm version from package.json is used
+      - name: Enable Corepack
+        run: corepack enable
+
       - uses: pnpm/action-setup@v4
 
       - uses: actions/setup-node@v4
         with:
           node-version: 20
           cache: "pnpm" # 顺便启用 pnpm 缓存，加速
+
+      # Verify pnpm version matches package.json packageManager field
+      - name: Check pnpm version
+        run: node scripts/check-pnpm-version.mjs
 
       - name: Install deps
         run: pnpm install --frozen-lockfile

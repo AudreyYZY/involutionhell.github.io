@@ -59,13 +59,18 @@ cd involutionhell
 
 如果你的电脑还没有安装 pnpm，可以先运行：
 
-# 全局安装 pnpm
-npm install -g pnpm
+# 推荐方式：使用 corepack（Node.js 16.9+ 自带）
+corepack enable
 
-# 安装依赖
+# 或者全局安装指定版本的 pnpm
+npm install -g pnpm@10.20.0
+
+# 安装依赖（注意：项目锁定了 pnpm@10.20.0，请确保版本一致）
 pnpm install
 pnpm dev
 ```
+
+⚠️ **重要提示**：本项目在 `package.json` 中锁定了 `pnpm@10.20.0`，请确保使用相同版本以避免 `pnpm-lock.yaml` 格式不一致。使用 `pnpm --version` 检查版本，或运行 `pnpm check:pnpm-version` 验证。
 
 打开浏览器访问 [http://localhost:3000](http://localhost:3000)。
 
