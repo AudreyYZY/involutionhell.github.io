@@ -22,6 +22,7 @@ if (process.env.NODE_ENV === "production" && !envSecret) {
 }
 
 export const authConfig = {
+  providers: [],
   secret,
   pages: {
     signIn: "/login",
